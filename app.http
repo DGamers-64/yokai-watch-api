@@ -12,6 +12,10 @@ GET http://localhost:3000/yokai/1323ba0c-0aee-48b6-a1bd-ac42460502ad
 ### GET YOKAI FOR TRIBU
 GET http://localhost:3000/yokai?tribu=Valiente
 
+### GET YOKAI FOR RANGO
+
+GET http://localhost:3000/yokai?rango=E
+
 
 ### POST YOKAI
 POST http://localhost:3000/yokai
@@ -19,7 +23,7 @@ Content-Type: application/json
 
 {
     "nombre": "Alcaldero",
-    "tribu": "Valiente",
+    "tribu": "Misterioso",
     "rango": "E"
 }
 

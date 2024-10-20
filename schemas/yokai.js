@@ -1,4 +1,4 @@
-const z = require('zod')
+import z from 'zod'
 
 const yokaiSchema = z.object({
     nombre: z.string(),
@@ -6,15 +6,10 @@ const yokaiSchema = z.object({
     rango: z.enum(['S', 'A', 'B', 'C', 'D', 'E', '-'])
 })
 
-function validateYokai(object) {
+export function validateYokai(object) {
     return yokaiSchema.safeParse(object)
 }
 
-function validatePartialYokai(object) {
+export function validatePartialYokai(object) {
     return yokaiSchema.partial().safeParse(object)
-}
-
-module.exports = {
-    validateYokai,
-    validatePartialYokai
 }
