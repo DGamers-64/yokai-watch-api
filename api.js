@@ -5,7 +5,7 @@ const cors = require('cors')
 const app = express()
 const yokais = require('./json/yokai.json')
 const { validateYokai, validatePartialYokai } = require('./schemas/yokai')
-const PORT = 3000
+const PORT = process.env.PORT ?? 3000
 
 app.disable('x-powered-by')
 
