@@ -1,0 +1,18 @@
+{
+  "name": "yokai2-api",
+  "version": "1.0.0",
+  "description": "Esta API contendrá todos los datos posibles de Yo-Kai Watch 2 (Español) disponibles para su uso",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "2.8.5",
+    "express": "4.21.1",
+    "zod": "3.23.8"
+  }
+}

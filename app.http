@@ -1,0 +1,33 @@
+### INDEX
+GET http://localhost:3000/
+
+### GET YOKAI
+GET http://localhost:3000/yokai
+
+
+### GET YOKAI FOR ID
+GET http://localhost:3000/yokai/1323ba0c-0aee-48b6-a1bd-ac42460502ad
+
+
+### GET YOKAI FOR TRIBU
+GET http://localhost:3000/yokai?tribu=Valiente
+
+
+### POST YOKAI
+POST http://localhost:3000/yokai
+Content-Type: application/json
+
+{
+    "nombre": "Alcaldero",
+    "tribu": "Valiente",
+    "rango": "E"
+}
+
+
+### PATCH YOKAI
+PATCH http://localhost:3000/yokai/c52f8db4-8b24-4be8-b512-f9d9e2db57a6
+Content-Type: application/json
+
+{
+    "rango": "A"
+}
