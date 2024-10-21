@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Yokai 2 API</title>
     <style>
         html {
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -14,7 +14,6 @@
         article {
             border: 2px solid black;
             background-color: white;
-            width: fit-content;
             margin: 1rem;
             padding: 1rem;
         }
@@ -23,14 +22,83 @@
             font-size: 30px;
             font-weight: bold;
         }
+
+        .nombre {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .label_yokai_input {
+            font-weight: bold;
+        }
+
+        .col-1 {width: 8.33%;}
+        .col-2 {width: 16.66%;}
+        .col-3 {width: 25%;}
+        .col-4 {width: 33.33%;}
+        .col-5 {width: 41.66%;}
+        .col-6 {width: 50%;}
+        .col-7 {width: 58.33%;}
+        .col-8 {width: 66.66%;}
+        .col-9 {width: 75%;}
+        .col-10 {width: 83.33%;}
+        .col-11 {width: 91.66%;}
+        .col-12 {width: 100%;}
+
+        [class*="col-"] {
+            float: left;
+        }
+
+        .vacio {
+            height: 1px;
+        }
     </style>
+    <script>
+    function fetchData() {
+        const yokaiInput = document.getElementById('yokaiInput').value.toLowerCase()
+
+        if (!yokaiInput) {
+            return false
+        }
+
+        fetch(`https://yokai2-api.onrender.com/yokai/?nombre=${yokaiInput}`)
+            .then(res => res.json())
+            .then(data => {
+                data.forEach(yokai => {
+                    document.getElementById('yokaiNombre').innerHTML = yokai.nombre
+                    document.getElementById('yokaiTribu').innerHTML = `La tribu de tu yokai es ${yokai.tribu}`
+                    document.getElementById('yokaiRango').innerHTML = `El rango de tu yokai es ${yokai.rango}`
+                }); 
+            }
+            )
+    }
+
+    function enterInput(event) {
+        if (event.key === 'Enter') {
+            fetchData();
+        }
+    }
+    </script>
 </head>
-
 <body>
-    <article>
-        <p class="title">Yo-Kai 2 API</p>
-        <p>Esta API contendrá todos los datos posibles de Yo-Kai Watch 2 (Español) disponibles para su uso</p>
-    </article>
+    <div class="col-3 vacio">
+    </div>
+    <main class="col-6">
+        <article>
+            <span class="title">Yo-Kai 2 API</span><br><br>
+            <span>Esta API contendrá todos los datos posibles de Yo-Kai Watch 2 (Español) disponibles para su uso</span>
+        </article>
+        <article>
+            <label class="label_yokai_input" for="yokaiInput">Busca un Yo-Kai por nombre: </label>
+            <input id="yokaiInput" type="text" onkeydown="enterInput(event)">
+            <button onclick="fetchData()" id="buttonBuscar">Buscar</button>
+        </article>
+        <article>
+            <span id="yokaiNombre" class="nombre"></span><br><br>
+            <span id="yokaiTribu"></span><br><br>
+            <span id="yokaiRango"></span>
+        </article>
+    </main>
+    <div class="col-3"></div>
 </body>
-
 </html>
