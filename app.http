@@ -6,7 +6,7 @@ GET http://localhost:3000/yokai
 
 
 ### GET YOKAI FOR ID
-GET http://localhost:3000/yokai/1323ba0c-0aee-48b6-a1bd-ac42460502ad
+GET http://localhost:3000/yokai/1
 
 
 ### GET YOKAI FOR TRIBU
@@ -22,16 +22,23 @@ POST http://localhost:3000/yokai
 Content-Type: application/json
 
 {
-    "nombre": "Alcaldero",
-    "tribu": "Misterioso",
-    "rango": "E"
+    "img": "https://mtwildwood.net/yokaiArt/icons/iconWashogun.png",
+    "nombre": "HOLA",
+    "tribu": "Valiente",
+    "rango": "B",
+    "elemento_debil": "Fuego",
+    "foto": 1,
+    "bando": "Ambos"
 }
 
 
 ### PATCH YOKAI
-PATCH http://localhost:3000/yokai/f7f2485d-3086-4cba-808a-169433506dd7
+PATCH http://localhost:3000/yokai/6
 Content-Type: application/json
 
 {
-    "rango": "A"
+    "img": "https://mtwildwood.net/yokaiArt/icons/iconSlackaslash.png"
 }
+
+### DELETE YOKAI
+DELETE http://localhost:3000/yokai/9

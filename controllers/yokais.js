@@ -1,4 +1,4 @@
-import { YokaiModel } from "../models/yokai.js"
+import { YokaiModel } from "../models/mysql/yokai.js"
 import { validateYokai, validatePartialYokai } from '../schemas/yokai.js'
 
 export class YokaiController {
