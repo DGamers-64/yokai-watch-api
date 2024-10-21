@@ -4,8 +4,12 @@ import { randomUUID } from 'node:crypto'
 const yokais = readJSON('./yokai.json')
 
 export class YokaiModel {
-    static async getAll ({ tribu, rango }) {
-        if (tribu) {
+    static async getAll ({ nombre, tribu, rango }) {
+        if (nombre) {
+            return yokais.filter(
+                yokai => yokai.nombre.toLowerCase() === nombre.toLowerCase()
+            )
+        } else if (tribu) {
             return yokais.filter(
                 yokai => yokai.tribu.toLowerCase() === tribu.toLowerCase()
             )

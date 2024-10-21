@@ -29,7 +29,7 @@ Content-Type: application/json
 
 
 ### PATCH YOKAI
-PATCH http://localhost:3000/yokai/c52f8db4-8b24-4be8-b512-f9d9e2db57a6
+PATCH http://localhost:3000/yokai/f7f2485d-3086-4cba-808a-169433506dd7
 Content-Type: application/json
 
 {

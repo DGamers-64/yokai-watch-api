@@ -28,6 +28,7 @@ app.use('/yokai', yokaisRouter)
 // ERROR 404
 
 app.use((req, res) => {
+    console.log("404")
     res.status(404).send('<h1>Error 404: File Not Found</h1>')
 })
 
