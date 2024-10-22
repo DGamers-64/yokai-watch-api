@@ -5,7 +5,7 @@
   "main": "api.js",
   "type": "module",
   "scripts": {
-    "start": "node api.js"
+    "start": "node --watch api.js"
   },
   "keywords": [],
   "author": "xLune64",

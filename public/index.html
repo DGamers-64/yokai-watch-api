@@ -50,14 +50,14 @@
         }
     </style>
     <script>
-    function fetchData() {
+    function getDataFetch() {
         const yokaiInput = document.getElementById('yokaiInput').value.toLowerCase()
 
         if (!yokaiInput) {
             return false
         }
 
-        fetch(`https://yokai2-api.onrender.com/yokai/?nombre=${yokaiInput}`)
+        fetch(`http://localhost:3000/yokai?nombre=${yokaiInput}`)
             .then(res => res.json())
             .then(data => {
                 data.forEach(yokai => {
@@ -69,9 +69,24 @@
             )
     }
 
+    function postDataFetch() {
+        const form = document.getElementById('form')
+
+        const payload = new FormData(form)
+
+        console.log([...payload])
+
+        fetch('http://localhost:3000/yokai', {
+            method: 'POST',
+            body: payload
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+    }
+
     function enterInput(event) {
         if (event.key === 'Enter') {
-            fetchData();
+            getDataFetch();
         }
     }
     </script>
@@ -81,11 +96,12 @@
         <article>
             <span class="title">Yo-Kai 2 API</span><br><br>
             <span>Esta API contendrá todos los datos posibles de Yo-Kai Watch 2 (Español) disponibles para su uso</span>
+            <a href="./post.html">POST</a>
         </article>
         <article>
             <label class="label_yokai_input" for="yokaiInput">Busca un Yo-Kai por nombre: </label>
             <input id="yokaiInput" type="text" onkeydown="enterInput(event)">
-            <button onclick="fetchData()" id="buttonBuscar">Buscar</button>
+            <button onclick="getDataFetch()" id="buttonBuscar">Buscar</button>
         </article>
         <article>
             <span id="yokaiNombre" class="nombre"></span><br><br>
