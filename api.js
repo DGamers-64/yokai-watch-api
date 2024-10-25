@@ -1,37 +1,20 @@
 import express, { json } from 'express'
-import { yokaisRouter } from './routes/yokais.js'
-import { corsMiddleware } from './middlewares/cors.js'
-import { fileURLToPath } from 'url';
-import path from 'path';
+import { langRouter } from './routes/lang.js'
+import { client } from './client/client.js'
 
+const PORT = process.env.PORT
 const app = express()
-const PORT = process.env.PORT ?? 3000
+
 
 app.disable('x-powered-by')
-
-// MIDDLEWARE
-
-app.use(express.static('public'))
-app.use(corsMiddleware())
 app.use(json())
 
-// GET INDEX
+app.use('/:lang', langRouter)
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/index.html'));
-});
-
-app.use('/yokai', yokaisRouter)
-
-// ERROR 404
-
-app.use((req, res) => {
-    res.status(404).send('<h1>Error 404: File Not Found</h1>')
+app.use('/', (req, res) => {
+    res.send('<h1>YokAPI is live!</h1>')
 })
 
 app.listen(PORT, () => {
-    console.log(`Servidor escuchando en el puerto http://localhost:${PORT}`)
+    console.log(`Servidor encendido en el puerto ${PORT}`)
 })

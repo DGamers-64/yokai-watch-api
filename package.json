@@ -1,19 +1,17 @@
 {
-  "name": "yokai2-api",
+  "name": "yokapi",
   "version": "1.0.0",
-  "description": "Esta API contendrá todos los datos posibles de Yo-Kai Watch 2 (Español) disponibles para su uso",
   "main": "api.js",
   "type": "module",
   "scripts": {
-    "start": "node --watch api.js"
+    "start": "node --env-file=.env --watch api.js"
   },
   "keywords": [],
-  "author": "xLune64",
+  "author": "",
   "license": "ISC",
+  "description": "",
   "dependencies": {
-    "cors": "2.8.5",
-    "express": "4.21.1",
-    "mysql2": "^3.11.3",
-    "zod": "3.23.8"
+    "express": "^4.21.1",
+    "mysql2": "^3.11.3"
   }
 }
