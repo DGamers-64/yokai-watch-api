@@ -4,7 +4,8 @@
   "main": "api.js",
   "type": "module",
   "scripts": {
-    "start": "node --env-file=.env --watch api.js"
+    "start": "node --env-file=.env --watch api.js",
+    "docker_start": "node --watch api.js"
   },
   "keywords": [],
   "author": "",
