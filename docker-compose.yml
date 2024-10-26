@@ -34,7 +34,7 @@ services:
       DB_PORT: 3306
       DB_PASSWORD: letmein
       DB_NAME: yokaidb
-    command: sh -c "sleep 3 && node --run docker_start"
+    command: sh -c "sleep 10 && node --run docker_start"
     networks:
       - internalnet
 
