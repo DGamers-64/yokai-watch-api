@@ -1,6 +1,21 @@
+const modelType = process.env.MODEL
+
+const { Game } = await import(`../models/${modelType}/game.js`)
+
 export class GameController {
-    static async getGameInfo(req, res) {
-        const { lang, game } = req.params
-        res.send(lang + " " + game)
+static async getGame(req, res) {
+        const { game } = req.params
+
+        let gameData
+
+        if (game === 'games') {
+            gameData = await Game.getAllGames()
+        } else {
+            gameData = await Game.getGameInfo({ game })
+        }
+
+        console.log(gameData)
+
+        res.send(gameData)
     }
 }

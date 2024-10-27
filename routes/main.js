@@ -4,7 +4,7 @@ import { GameController } from '../controllers/game.js'
 
 export const mainRouter = Router({ mergeParams: true })
 
-mainRouter.get('/', GameController.getGameInfo)
+mainRouter.get('/', GameController.getGame)
 
 mainRouter.get('/yokai', YokaiController.getAllYokai)
 

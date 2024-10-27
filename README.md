@@ -7,41 +7,43 @@ Esta API contendrá todos los datos posibles de Yo-Kai Watch disponibles para su
 Para instalar las dependencias usa:
 
     npm install
-Además tienes que crear un archivo .env con el siguiente formato:
+Además tienes que crear un archivo .env con las siguientes variables:
 
 	PORT=
+PORT indicará el puerto en el que estará alojada la API
+
+	MODEL=
+MODEL indicará que modelo de base de datos quieres utilizar, están disponibles csv y mysql de momento
+
 	MYSQL_DB_HOST=
 	MYSQL_DB_USER=
 	MYSQL_DB_PORT=
 	MYSQL_DB_PASSWORD=
 	MYSQL_DB_NAME=
-Según tus configuraciones tendrás que rellenarlo de una u otra forma
+Estas variables tendrás que configurarlas según tu configuración de mysql, si no lo vas a utilizar son opcionales.
 
 Para ejecutar la API puedes usar:
 
 	node --run start
-**Opcional**: Si quieres correr la API en un entorno de Docker usa:
+**Opcional**: Si quieres correr la API en un entorno de Docker tienes que editar el archivo `docker-compose.yml` con las mismas variables que hemos editado antes, después usa:
 
     docker-compose up -d --build
 # Uso
 Para llamar a la API es tan simple como entrar al dominio ([localhost normalmente](http://localhost:3000)) y usar alguno de los siguientes parámetros:
 
-## Ver que juegos hay disponibles (TODO)
-	http://host/games
-## Ver que contenidos tiene un juego (TODO)
-	http://host/:game
-:game = Abreviatura del juego a consultar
+## Ver que juegos hay disponibles
+	GET http://host/games
+## Ver información sobre un juego
+	GET http://host/:game
+- :game = Abreviatura del juego a consultar
 ## Ver todos los yokais de un juego
-	http://host/:game/yokai
-:game = Abreviatura del juego a consultar
+	GET http://host/:game/yokai
+- :game = Abreviatura del juego a consultar
 ## Buscar un yokai específico según id
-	http://host/:game/yokai/:id
-:game = Abreviatura del juego a consultar
-:id = Nº de Medallium a ser consultado
+	GET http://host/:game/yokai/:id
+- :game = Abreviatura del juego a consultar
+- :id = Nº de Medallium a ser consultado
 ## Buscar un yokai específico según nombre
-	http://host/:game/yokai/:nombre
-:game = Abreviatura del juego a consultar
-:nombre = Nombre a ser consultado
-# Features
-- No se discrimina ni por tildes ni por mayúsculas en ningún modelo
-- Se recoge toda la información posible (TODO)
+	GET http://host/:game/yokai/:nombre
+- :game = Abreviatura del juego a consultar
+- :nombre = Nombre a ser consultado

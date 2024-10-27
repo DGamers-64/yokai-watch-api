@@ -9,13 +9,13 @@ const CSV_BASE_PATH = path.join(__dirname, '../../databases/csv');
 
 function normalizeString(str) {
     if (typeof str !== 'string') {
-        return '';
+        return ''
     }
     
     return str
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
-        .toLowerCase();
+        .toLowerCase()
 }
 
 function parseRow(row) {
@@ -72,6 +72,27 @@ export class CsvHandler {
                 .on('error', (error) => {
                     console.error('Error reading CSV file:', error);
                     reject(error);
+                });
+        });
+    }
+
+    static async getAllFromCsv(fileName) {
+        const filePath = path.join(CSV_BASE_PATH, fileName)
+
+        return new Promise((resolve, reject) => {
+            const results = [];
+
+            fs.createReadStream(filePath)
+                .pipe(csv())
+                .on('data', (row) => {
+                    results.push(parseRow(row))
+                })
+                .on('end', () => {
+                    resolve(results)
+                })
+                .on('error', (error) => {
+                    console.error('Error reading CSV file:', error)
+                    reject(error)
                 });
         });
     }
