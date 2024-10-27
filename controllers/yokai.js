@@ -1,4 +1,4 @@
-import { YokaiModel } from "../models/mysql/yokai.js";
+import { YokaiModel } from "../models/csv/yokai.js";
 
 export class YokaiController {
     static async getAllYokai(req, res) {

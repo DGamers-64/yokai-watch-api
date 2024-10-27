@@ -4,7 +4,7 @@ services:
     image: mysql
     restart: unless-stopped
     volumes:
-      - ./dbinit/init.sql:/docker-entrypoint-initdb.d/0_init.sql
+      - ./databases/mysql/yokaidb.sql:/docker-entrypoint-initdb.d/0_init.sql
     ports:
       - 3307:3306
     expose:

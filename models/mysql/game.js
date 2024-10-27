@@ -9,8 +9,6 @@ export class Game {
 
         if (gameResult.length === 0) return []
 
-        const gameId = gameResult[0].id
-
-        return gameId
+        return gameResult[0].id
     }
 }
