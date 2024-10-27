@@ -14,8 +14,6 @@ static async getGame(req, res) {
             gameData = await Game.getGameInfo({ game })
         }
 
-        console.log(gameData)
-
         res.send(gameData)
     }
 }
