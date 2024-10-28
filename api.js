@@ -12,6 +12,7 @@ const app = express()
 app.disable('x-powered-by')
 app.use(json())
 app.use(cors())
+app.use(express.static('public'))
 
 app.use((req, res, next) => {
     if (req.originalUrl != '/favicon.ico') {
