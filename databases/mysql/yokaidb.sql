@@ -1,5 +1,6 @@
 DROP DATABASE IF EXISTS yokaidb;
 CREATE DATABASE yokaidb;
+ALTER DATABASE yokaidb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE yokaidb;
 
 CREATE TABLE game (
