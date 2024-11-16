@@ -1,9 +1,8 @@
 DROP DATABASE IF EXISTS yokaidb;
 CREATE DATABASE yokaidb;
-ALTER DATABASE yokaidb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE yokaidb;
 
-CREATE TABLE game (
+CREATE TABLE juego (
 	id INT AUTO_INCREMENT PRIMARY KEY,
     abreviatura VARCHAR(8),
     nombre_completo VARCHAR(20),
@@ -11,32 +10,99 @@ CREATE TABLE game (
     fecha_de_lanzamiento DATE
 );
 
+CREATE TABLE habilidad (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(30),
+    descripcion VARCHAR(60)
+);
+
+CREATE TABLE ataque (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(15),
+    poder VARCHAR(6)
+);
+
+CREATE TABLE tecnica (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(15),
+    poder VARCHAR(6),
+    elemento VARCHAR(10)
+);
+
+CREATE TABLE espiritacion (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(15),
+    descripcion VARCHAR(50),
+    poder VARCHAR(15)
+);
+
+CREATE TABLE animaximum (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(15),
+    poder VARCHAR(6),
+    descripcion VARCHAR(50)
+);
+
+CREATE TABLE tipo_comida (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(20)
+);
+
+CREATE TABLE inventario (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_bolsillo INT,
+    id_dentro INT
+);
+
 CREATE TABLE yokai (
 	id INT AUTO_INCREMENT PRIMARY KEY,
-    game INT,
+    id_juego INT,
 	nombre VARCHAR(30),
-    
-    
-    pv INT,
-    fue INT,
-    esp INT,
-    def INT,
-    vel INT,
-    huecos_obj INT,
+    medalla TEXT,
+    modelo_3d TEXT,
     no_de_medallium INT,
     tribu VARCHAR(20),
     rango VARCHAR(5),
-	FOREIGN KEY (game) REFERENCES game(id)
+    bio TEXT,
+    id_habilidad INT,
+    id_ataque INT,
+    id_tecnica INT,
+    id_espiritacion INT,
+    id_animaximum INT,
+    id_comida_favorita INT,
+    id_comida_odiada INT,
+    fuego FLOAT,
+    hielo FLOAT,
+    tierra FLOAT,
+    rayo FLOAT,
+    agua FLOAT,
+    viento FLOAT,
+    id_drop_comun INT,
+    prob_comun INT,
+    id_drop_raro INT,
+    prob_raro INT,
+    dinero FLOAT,
+    experiencia INT,
+    blasters VARCHAR(15),
+    huecos_obj INT,
+	FOREIGN KEY (id_juego) REFERENCES juego(id),
+    FOREIGN KEY (id_habilidad) REFERENCES habilidad(id),
+    FOREIGN KEY (id_ataque) REFERENCES ataque(id),
+    FOREIGN KEY (id_tecnica) REFERENCES tecnica(id),
+    FOREIGN KEY (id_espiritacion) REFERENCES espiritacion(id),
+    FOREIGN KEY (id_animaximum) REFERENCES animaximum(id),
+    FOREIGN KEY (id_comida_favorita) REFERENCES tipo_comida(id),
+    FOREIGN KEY (id_comida_odiada) REFERENCES tipo_comida(id),
+    FOREIGN KEY (id_drop_comun) REFERENCES inventario(id),
+    FOREIGN KEY (id_drop_raro) REFERENCES inventario(id)
 );
 
-INSERT INTO game (abreviatura, fecha_de_lanzamiento, nombre_completo, descripcion) VALUES
-	('ykw1', '2013-7-11', 'Yo-Kai Watch 1', 'Yo-Kai Watch narra las aventuras de un niño, llamado Nate, que tiene un reloj especial que le alienta a descubrir seres misterios llamados Yo-Kai. Intentará averiguar por qué se comportan mal con la esperanza de poder hacerles entrar en razón.'),
-    ('ykw2', '2014-7-10', 'Yo-Kai Watch 2', 'El juego trata sobre las aventuras de Nathan Adams, un niño de 11 años al que le roban el reloj Yo-kai, junto a Whisper y Jibanyan, tendrán que adentrarse en el pasado para derrotar a Lady Desdicha, villana principal, y sus secuaces, los Yo-kai maléficos.');
-
-INSERT INTO yokai (game, nombre, pv, fue, esp, def, vel, huecos_obj, no_de_medallium, tribu, rango) VALUES
-	(1, 'Alcaldero', 319, 136, 95, 85, 131, 1, 1, 'Valiente', 'E'),
-    (2, 'Alcaldero', 319, 160, 70, 82, 130, 1, 1, 'Valiente', 'E'),
-    (2, 'Sinná', 378, 189, 84, 89, 150, 1, 2, 'Valiente', 'C');
-
-SELECT * FROM game;
-SELECT * FROM yokai;
+CREATE TABLE forma_alt (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_yokai INT,
+    bando VARCHAR(20),
+    modelo_3d TEXT,
+    id_habilidad INT,
+    FOREIGN KEY (id_yokai) REFERENCES yokai(id),
+    FOREIGN KEY (id_habilidad) REFERENCES habilidad(id)
+);
