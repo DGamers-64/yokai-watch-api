@@ -22,6 +22,8 @@ MODEL indicará que modelo de base de datos quieres utilizar, están disponibles
 	MYSQL_DB_NAME=
 Estas variables tendrás que configurarlas según tu configuración de mysql, si no lo vas a utilizar son opcionales.
 
+También puedes ejecutar con python el archivo `generate-deafult-env.py` para generar un `.env` por defecto que usa el modelo de MySQL
+
 Para ejecutar la API puedes usar:
 
 	node --run start
