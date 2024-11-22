@@ -7,7 +7,7 @@ export class YokaiModel {
         const gameId = await Game.getGameId({ game })
 
         const [yokai] = await connection.query(
-            'SELECT * FROM yokai WHERE game = ?',
+            'SELECT * FROM yokai WHERE id_juego = ?',
             [ gameId ]
         )
 
@@ -21,7 +21,7 @@ export class YokaiModel {
         const gameId = await Game.getGameId({ game })
 
         const [yokai] = await connection.query(
-            'SELECT * FROM yokai WHERE game = ? AND no_de_medallium = ?',
+            'SELECT * FROM yokai WHERE id_juego = ? AND no_de_medallium = ?',
             [ gameId, id ]
         )
 
@@ -34,7 +34,7 @@ export class YokaiModel {
         const gameId = await Game.getGameId({ game })
         
         const [yokai] = await connection.query(
-            'SELECT * FROM yokai WHERE game = ? AND nombre = ?',
+            'SELECT * FROM yokai WHERE id_juego = ? AND nombre = ?',
             [ gameId, nombre ]
         )
 

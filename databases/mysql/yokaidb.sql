@@ -18,21 +18,21 @@ CREATE TABLE habilidad (
 
 CREATE TABLE ataque (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(20) UNIQUE,
+    nombre VARCHAR(25) UNIQUE,
     poder INT,
     golpes INT
 );
 
 CREATE TABLE tecnica (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(15) UNIQUE,
+    nombre VARCHAR(25) UNIQUE,
     poder VARCHAR(6),
-    elemento VARCHAR(10)
+    elemento VARCHAR(20)
 );
 
 CREATE TABLE espiritacion (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(15) UNIQUE,
+    nombre VARCHAR(25) UNIQUE,
     descripcion TEXT,
     objetivo VARCHAR(10),
     poder VARCHAR(15)
@@ -40,11 +40,11 @@ CREATE TABLE espiritacion (
 
 CREATE TABLE animaximum (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(15) UNIQUE,
+    nombre VARCHAR(25) UNIQUE,
     poder INT,
     golpes INT,
     descripcion TEXT,
-    elemento VARCHAR(10)
+    elemento VARCHAR(20)
 );
 
 CREATE TABLE tipo_comida (
@@ -57,8 +57,8 @@ CREATE TABLE comida (
     nombre VARCHAR(20),
     tipo INT,
     imagen TEXT,
-    FOREIGN KEY tipo REFERENCES tipo_comida(id)
-)
+    FOREIGN KEY (tipo) REFERENCES tipo_comida(id)
+);
 
 CREATE TABLE inventario (
     id INT AUTO_INCREMENT PRIMARY KEY,
