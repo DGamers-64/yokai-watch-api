@@ -30,6 +30,14 @@ Para ejecutar la API puedes usar:
 **Opcional**: Si quieres correr la API en un entorno de Docker tienes que editar el archivo `docker-compose.yml` con las mismas variables que hemos editado antes, después usa:
 
     docker-compose up -d --build
+
+# Estableciento las bases de datos
+Dependiendo del modelo que necesites utilizar tendrás que hacer uno u otro proceso.
+## CSV
+Para CSV no tendrás que hacer nada porque ya vienen todos los archivos en la carpeta `./databases/csv` y el proyecto utilizará esta carpeta como fuente.
+## MySQL
+Para MySQL tendrás que ejecutar en tu servidor los scripts que vienen en `./databases/mysql`. Con ejecutarlos y establecer las variables de entorno correspondientes debería de ser suficiente para que tu proyecto funcione.
+
 # Uso
 Para llamar a la API es tan simple como entrar al dominio ([localhost normalmente](http://localhost:3000)) y usar alguno de los siguientes parámetros:
 
