@@ -21,4 +21,15 @@ export class Game {
 
         return gameResult[0].id
     }
+
+    static async getGameInfo({ game }) {
+        const [gameResult] = await connection.query(
+            'SELECT * FROM juego WHERE abreviatura = ?',
+            [ game ]
+        )
+
+        if (gameResult.length === 0) return []
+
+        return gameResult[0]
+    }
 }

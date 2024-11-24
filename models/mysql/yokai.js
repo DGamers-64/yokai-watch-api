@@ -7,7 +7,7 @@ export class YokaiModel {
         const gameId = await Game.getGameId({ game })
 
         const [yokai] = await connection.query(
-            'SELECT * FROM yokai WHERE id_juego = ?',
+            'SELECT no_de_medallium, nombre FROM yokai WHERE id_juego = ?',
             [ gameId ]
         )
 
