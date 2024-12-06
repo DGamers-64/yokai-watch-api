@@ -1,6 +1,6 @@
 const modelType = process.env.MODEL
 
-const { YokaiModel } = await import(`../../models/${modelType}/ykw_2/yokai.js`);
+const { YokaiModel } = await import(`../../models/${modelType}/ykw_3/yokai.js`);
 
 export class YokaiController {
     static async getAllYokai(req, res) {

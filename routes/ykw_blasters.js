@@ -1,7 +1,7 @@
 import { Router } from 'express'
-import { YokaiController } from '../controllers/yokai.js'
-import { GameController } from '../controllers/game.js'
-import { InventarioController } from '../controllers/inventario.js'
+import { YokaiController } from '../controllers/ykw_blasters/yokai.js'
+import { GameController } from '../controllers/ykw_blasters/game.js'
+import { InventarioController } from '../controllers/ykw_blasters/inventario.js'
 
 export const ykwBlastersRouter = Router({ mergeParams: true })
 
