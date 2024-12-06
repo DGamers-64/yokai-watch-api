@@ -5,7 +5,7 @@ const config = {
     user: process.env.MYSQL_DB_USER,
     port: process.env.MYSQL_DB_PORT,
     password: process.env.MYSQL_DB_PASSWORD,
-    database: process.env.MYSQL_DB_NAME
+    database: 'yokaidb_2'
 }
 
 export const connection = await mysql.createConnection(config)

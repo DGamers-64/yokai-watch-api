@@ -19,10 +19,7 @@ MODEL indicará que modelo de base de datos quieres utilizar, están disponibles
 	MYSQL_DB_USER=
 	MYSQL_DB_PORT=
 	MYSQL_DB_PASSWORD=
-	MYSQL_DB_NAME=
 Estas variables tendrás que configurarlas según tu configuración de mysql, si no lo vas a utilizar son opcionales.
-
-También puedes ejecutar con python el archivo `generate-default-env.py` para generar un `.env` por defecto que usa el modelo de MySQL
 
 Para ejecutar la API puedes usar:
 
@@ -31,7 +28,7 @@ Para ejecutar la API puedes usar:
 
     docker-compose up -d --build
 
-# Estableciento las bases de datos
+# Establecimiento las bases de datos
 Dependiendo del modelo que necesites utilizar tendrás que hacer uno u otro proceso.
 ## CSV
 Para CSV no tendrás que hacer nada porque ya vienen todos los archivos en la carpeta `./databases/csv` y el proyecto utilizará esta carpeta como fuente.

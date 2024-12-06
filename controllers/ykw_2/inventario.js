@@ -1,6 +1,6 @@
 const modelType = process.env.MODEL
 
-const { InventarioModel } = await import(`../models/${modelType}/inventario.js`)
+const { InventarioModel } = await import(`../../models/${modelType}/inventario.js`)
 
 export class InventarioController {
     static async getBolsillos(req, res) {

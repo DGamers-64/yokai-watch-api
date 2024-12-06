@@ -1,6 +1,6 @@
 const modelType = process.env.MODEL
 
-const { Game } = await import(`../models/${modelType}/game.js`)
+const { Game } = await import(`../../models/${modelType}/game.js`)
 
 export class GameController {
 static async getGame(req, res) {

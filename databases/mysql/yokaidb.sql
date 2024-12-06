@@ -11,16 +11,16 @@ CREATE TABLE juego (
 );
 
 CREATE TABLE habilidad (
-    id_juego INT,
     id INT AUTO_INCREMENT PRIMARY KEY,
+    id_juego INT,
     nombre VARCHAR(30),
     descripcion VARCHAR(60),
 	FOREIGN KEY (id_juego) REFERENCES juego(id)
 );
 
 CREATE TABLE ataque (
-    id_juego INT,
     id INT AUTO_INCREMENT PRIMARY KEY,
+    id_juego INT,
     nombre VARCHAR(25) UNIQUE,
     poder INT,
     golpes INT,
@@ -28,8 +28,8 @@ CREATE TABLE ataque (
 );
 
 CREATE TABLE tecnica (
-    id_juego INT,
     id INT AUTO_INCREMENT PRIMARY KEY,
+    id_juego INT,
     nombre VARCHAR(25) UNIQUE,
     poder VARCHAR(6),
     elemento VARCHAR(20),
@@ -37,8 +37,8 @@ CREATE TABLE tecnica (
 );
 
 CREATE TABLE espiritacion (
-    id_juego INT,
     id INT AUTO_INCREMENT PRIMARY KEY,
+    id_juego INT,
     nombre VARCHAR(25) UNIQUE,
     descripcion TEXT,
     objetivo VARCHAR(10),
@@ -47,8 +47,8 @@ CREATE TABLE espiritacion (
 );
 
 CREATE TABLE animaximum (
-    id_juego INT,
     id INT AUTO_INCREMENT PRIMARY KEY,
+    id_juego INT,
     nombre VARCHAR(25) UNIQUE,
     poder INT,
     golpes INT,
@@ -58,15 +58,15 @@ CREATE TABLE animaximum (
 );
 
 CREATE TABLE tipo_comida (
-    id_juego INT,
     id INT AUTO_INCREMENT PRIMARY KEY,
+    id_juego INT,
     nombre VARCHAR(20),
 	FOREIGN KEY (id_juego) REFERENCES juego(id)
 );
 
 CREATE TABLE comida (
-    id_juego INT,
     id INT AUTO_INCREMENT PRIMARY KEY,
+    id_juego INT,
     nombre VARCHAR(25),
     tipo INT,
     imagen TEXT,
@@ -75,8 +75,8 @@ CREATE TABLE comida (
 );
 
 CREATE TABLE inventario (
-    id_juego INT,
     id INT AUTO_INCREMENT PRIMARY KEY,
+    id_juego INT,
     bolsillo VARCHAR(15),
     id_interior INT,
 	FOREIGN KEY (id_juego) REFERENCES juego(id)
@@ -126,8 +126,8 @@ CREATE TABLE yokai (
 );
 
 CREATE TABLE forma_alt (
-    id_juego INT,
     id INT AUTO_INCREMENT PRIMARY KEY,
+    id_juego INT,
     id_yokai INT,
     bando VARCHAR(20),
     modelo_3d TEXT,

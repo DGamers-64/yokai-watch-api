@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS yokaidb_2;
+CREATE DATABASE yokaidb_2;
+USE yokaidb_2;
