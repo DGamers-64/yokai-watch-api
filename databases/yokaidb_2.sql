@@ -39,6 +39,12 @@ CREATE TABLE comida (
     imagen TEXT
 );
 
+CREATE TABLE objeto (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(25),
+    imagen TEXT
+)
+
 CREATE TABLE inventario (
     nombre VARCHAR(50) PRIMARY KEY,
     bolsillo VARCHAR(15),
@@ -85,8 +91,7 @@ CREATE TABLE yokai (
 );
 
 CREATE TABLE forma_alt (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    id_yokai INT,
+    id_yokai INT PRIMARY KEY,
     bando VARCHAR(20),
     habilidad VARCHAR(30),
     FOREIGN KEY (id_yokai) REFERENCES yokai(id),
@@ -223,15 +228,15 @@ INSERT INTO comida (nombre, tipo, imagen) VALUES
     ("Chicle de 10","Chuches",CONCAT(@linkComida, "9", @png)),
     ("Chocobarrita","Chocobarritas",CONCAT(@linkComida, "72", @png));
 
-INSERT INTO inventario (nombre, bolsillo, id_interior)
-    SELECT nombre, 'Comida', id FROM comida;
---    UNION
---    SELECT nombre, 'Objetos', id FROM objeto;
+SET @linkObjeto = "https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/objeto/";
+INSERT INTO objeto (nombre, imagen) VALUES
+    ("Exporbe S",CONCAT(@linkObjeto, "60", @png)),
+    ("Pulsera de fuego",CONCAT(@linkObjeto, "61", @png));
 
--- BORRAR CUANDO ESTEN INSERTADOS LOS OBJETOS
-INSERT INTO inventario (nombre, bolsillo, id_interior) VALUES
-    ("Exporbe S",'Objeto',1),
-    ("Pulsera de fuego",'Objeto',2);
+INSERT INTO inventario (nombre, bolsillo, id_interior)
+    SELECT nombre, 'Comida', id FROM comida
+    UNION
+    SELECT nombre, 'Objetos', id FROM objeto;
 
 SET @linkMedalla = "https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/medallas/";
 INSERT INTO yokai (nombre,medalla,tribu,rango,bio,habilidad,ataque,tecnica,animaximum,espiritacion,comida_favorita,comida_odiada,blasters,drop_comun,prob_comun,drop_raro,prob_raro,dinero,experiencia,huecos_obj,fuego,hielo,tierra,rayo,agua,viento) VALUES

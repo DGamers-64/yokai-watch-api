@@ -9,10 +9,18 @@ export class InventarioController {
     }
 
     static async getItemsInBolsillo(req, res) {
-        const { game, bolsillo } = req.params
+        const { bolsillo } = req.params
 
-        const listaObjetos = await InventarioModel.getItemsInBolsillo({ game, bolsillo })
+        const listaObjetos = await InventarioModel.getItemsInBolsillo({ bolsillo })
 
         res.send(listaObjetos)
+    }
+
+    static async getItemsInfo(req, res) {
+        const { bolsillo, id } = req.params
+
+        const objeto = await InventarioModel.getItemsInfo({ bolsillo, id })
+
+        res.send(objeto)
     }
 }

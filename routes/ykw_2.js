@@ -31,7 +31,7 @@ ykw2Router.get('/inventario', InventarioController.getBolsillos)
 
 ykw2Router.get('/inventario/:bolsillo', InventarioController.getItemsInBolsillo)
 
-// mainRouter.get('/inventario/:bolsillo/:id', InventarioController.getItemsInfo)
+ykw2Router.get('/inventario/:bolsillo/:id', InventarioController.getItemsInfo)
 
 ykw2Router.get('/:otros', (req, res) => {
     res.status(404).send({ res: `Error 404: ${req.url}`})
