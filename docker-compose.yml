@@ -29,7 +29,6 @@ services:
       - yokaidb
     environment:
       PORT: 3000
-      MODEL: mysql
       DB_HOST: yokaidb
       DB_USER: admin
       DB_PORT: 3306

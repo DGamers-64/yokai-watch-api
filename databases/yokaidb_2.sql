@@ -202,32 +202,38 @@ INSERT INTO animaximum (nombre, poder, golpes, descripcion) VALUES
 --     ("Chocobarritas")
 --     ("Postre")
 --     ("Productos cocidos")
-
+SET @linkComida = "https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/";
+SET @png = ".png";
 INSERT INTO comida (nombre, tipo, imagen) VALUES
-    ("Arroz con ciruelas","Arroz","https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/1.png"),
-    ("Arroz en hoja de col","Arroz","https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/2.png"),
-    ("Arroz con huevas","Arroz","https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/3.png"),
-    ("Arroz con gambas","Arroz","https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/4.png"),
-    ("Atún selecto","Pescado","https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/46.png"),
-    ("Baguette","Pan","https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/7.png"),
-    ("Bollo con crema","Pan","https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/6.png"),
-    ("Brochetas de carne","Productos cocidos","https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/68.png"),
-    ("Brote de bambú","Verduras","https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/37.png"),
-    ("Caballa en salazón","Pescado","https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/43.png"),
-    ("Café con leche","Lácteos","https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/16.png"),
-    ("Caramelo pegajoso","Chuches","https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/10.png"),
-    ("Caramelos de frutas","Chuches","https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/12.png"),
-    ("Carnanibollo","Postre","https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/74.png"),
-    ("Carne veteada","Carne","https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/42.png"),
-    ("Chicle de 10","Chuches","https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/9.png"),
-    ("Chocobarrita","Chocobarritas","https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/72.png");
+    ("Arroz con ciruelas","Arroz",CONCAT(@linkComida, "1", @png)),
+    ("Arroz en hoja de col","Arroz",CONCAT(@linkComida, "2", @png)),
+    ("Arroz con huevas","Arroz",CONCAT(@linkComida, "3", @png)),
+    ("Arroz con gambas","Arroz",CONCAT(@linkComida, "4", @png)),
+    ("Atún selecto","Pescado",CONCAT(@linkComida, "46", @png)),
+    ("Baguette","Pan",CONCAT(@linkComida, "7", @png)),
+    ("Bollo con crema","Pan",CONCAT(@linkComida, "6", @png)),
+    ("Brochetas de carne","Productos cocidos",CONCAT(@linkComida, "68", @png)),
+    ("Brote de bambú","Verduras",CONCAT(@linkComida, "37", @png)),
+    ("Caballa en salazón","Pescado",CONCAT(@linkComida, "43", @png)),
+    ("Café con leche","Lácteos",CONCAT(@linkComida, "16", @png)),
+    ("Caramelo pegajoso","Chuches",CONCAT(@linkComida, "10", @png)),
+    ("Caramelos de frutas","Chuches",CONCAT(@linkComida, "12", @png)),
+    ("Carnanibollo","Postre",CONCAT(@linkComida, "74", @png)),
+    ("Carne veteada","Carne",CONCAT(@linkComida, "42", @png)),
+    ("Chicle de 10","Chuches",CONCAT(@linkComida, "9", @png)),
+    ("Chocobarrita","Chocobarritas",CONCAT(@linkComida, "72", @png));
 
 INSERT INTO inventario (nombre, bolsillo, id_interior)
     SELECT nombre, 'Comida', id FROM comida;
 --    UNION
 --    SELECT nombre, 'Objetos', id FROM objeto;
-INSERT INTO inventario (nombre, bolsillo, id_interior) VALUES
-    ("Exporbe S",'Objeto',1);
 
+-- BORRAR CUANDO ESTEN INSERTADOS LOS OBJETOS
+INSERT INTO inventario (nombre, bolsillo, id_interior) VALUES
+    ("Exporbe S",'Objeto',1),
+    ("Pulsera de fuego",'Objeto',2);
+
+SET @linkMedalla = "https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/medallas/";
 INSERT INTO yokai (nombre,medalla,tribu,rango,bio,habilidad,ataque,tecnica,animaximum,espiritacion,comida_favorita,comida_odiada,blasters,drop_comun,prob_comun,drop_raro,prob_raro,dinero,experiencia,huecos_obj,fuego,hielo,tierra,rayo,agua,viento) VALUES
-    ("Alcaldero","https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/medallas/1.png","Valiente","E","Un Yo-´kai descuidado que solo lleva un taparrabos y una sartén en la cabeza. No intentes imitarlo.","Despreocupación","Pelmapunzadas","Ascuas","Palillo Puntiagudo","A la Ligera","Arroz","Pan","Luchador","Arroz con ciruelas",45,"Exporbe S",17,0.07,28,1,0.7,1,1,1,1.3,1);
+    ("Alcaldero",CONCAT(@linkMedalla, "1", @png),"Valiente","E","Un Yo-kai descuidado que solo lleva un taparrabos y una sartén en la cabeza. No intentes imitarlo.","Despreocupación","Pelmapunzadas","Ascuas","Palillo Puntiagudo","A la Ligera","Arroz","Pan","Luchador","Arroz con ciruelas",45,"Exporbe S",17,0.07,28,1,0.7,1,1,1,1.3,1),
+    ("Sinná",CONCAT(@linkMedalla,"2",@png),"Valiente","C","Al quitarse la sartén, Sinná está desprotegido ante el mundo. Pero no le verás ni un moratón en el cuerpo ni expresar dolor.","Despreocupación","Multipuñalada","Ascuas","Lluvia de Palillos","Sin Defensa","Arroz","Pan","Luchador","Arroz en hoja de col",55,"Pulsera de fuego",16,0.16,32,1,0.5,1,1,1,1.5,1);

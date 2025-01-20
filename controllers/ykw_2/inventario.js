@@ -1,21 +1,18 @@
-const modelType = process.env.MODEL
-
-const { InventarioModel } = await import(`../../models/${modelType}/ykw_2/inventario.js`)
+const { InventarioModel } = await import(`../../models/ykw_2/inventario.js`)
 
 export class InventarioController {
     static async getBolsillos(req, res) {
-        const { game } = req.params
 
-        const allBolsillos = await InventarioModel.getAllBolsillosByGame({ game })
+        const allBolsillos = await InventarioModel.getAllBolsillos()
 
         res.send(allBolsillos)
     }
 
-    // static async getItemsInBolsillo(req, res) {
-    //     const { game, bolsillo } = req.params
+    static async getItemsInBolsillo(req, res) {
+        const { game, bolsillo } = req.params
 
-    //     const listaObjetos = await InventarioModel.getItemsInBolsillo({ game, bolsillo })
+        const listaObjetos = await InventarioModel.getItemsInBolsillo({ game, bolsillo })
 
-    //     res.send(listaObjetos)
-    // }
+        res.send(listaObjetos)
+    }
 }
