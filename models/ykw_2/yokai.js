@@ -21,11 +21,6 @@ export class YokaiModel {
 
         if (yokai.length === 0) return []
 
-        const [forma_alt_query] = await connection.query(
-            'SELECT * FROM forma_alt WHERE id_yokai = ?',
-            [ id ]
-        )
-
         const drops = {
             drop_comun: {
                 nombre: yokai[0].drop_comun,
@@ -83,6 +78,26 @@ export class YokaiModel {
         yokaiNuevo[0].resistencias = resistencias
         yokaiNuevo[0].comidas = comidas
         yokaiNuevo[0].movimientos = movimientos
+
+        const [localizaciones] = await connection.query(
+            'SELECT localizacion, anotaciones FROM yokai_localizacion WHERE yokai = ?',
+            [ yokaiNuevo[0].infoGeneral.id ]
+        )
+
+        for (let i = 0; i < localizaciones.length; i++) {
+            const [zona] = await connection.query(
+                'SELECT zona FROM localizacion WHERE nombre = ?',
+                [ localizaciones[i].localizacion ]
+            )
+            localizaciones[i].zona = zona[0].zona
+        }
+
+        yokaiNuevo[0].localizaciones = localizaciones
+
+        const [forma_alt_query] = await connection.query(
+            'SELECT * FROM forma_alt WHERE id_yokai = ?',
+            [ yokaiNuevo[0].infoGeneral.id ]
+        )
 
         if (forma_alt_query.length != 0) {
             const forma_alt = {
@@ -97,18 +112,13 @@ export class YokaiModel {
     }
 
     static async getYokaiByName({ nombre }) {
-        
+
         const [yokai] = await connection.query(
             'SELECT * FROM yokai WHERE nombre = ?',
             [ nombre ]
         )
 
         if (yokai.length === 0) return []
-
-        const [forma_alt_query] = await connection.query(
-            'SELECT * FROM forma_alt WHERE id_yokai = ?',
-            [ yokai[0].id ]
-        )
 
         const drops = {
             drop_comun: {
@@ -167,6 +177,26 @@ export class YokaiModel {
         yokaiNuevo[0].resistencias = resistencias
         yokaiNuevo[0].comidas = comidas
         yokaiNuevo[0].movimientos = movimientos
+
+        const [localizaciones] = await connection.query(
+            'SELECT localizacion, anotaciones FROM yokai_localizacion WHERE yokai = ?',
+            [ yokaiNuevo[0].infoGeneral.id ]
+        )
+
+        for (let i = 0; i < localizaciones.length; i++) {
+            const [zona] = await connection.query(
+                'SELECT zona FROM localizacion WHERE nombre = ?',
+                [ localizaciones[i].localizacion ]
+            )
+            localizaciones[i].zona = zona[0].zona
+        }
+
+        yokaiNuevo[0].localizaciones = localizaciones
+
+        const [forma_alt_query] = await connection.query(
+            'SELECT * FROM forma_alt WHERE id_yokai = ?',
+            [ yokaiNuevo[0].infoGeneral.id ]
+        )
 
         if (forma_alt_query.length != 0) {
             const forma_alt = {

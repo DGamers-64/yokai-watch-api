@@ -35,14 +35,23 @@ export class InventarioModel {
         }
     }
 
-    static async getItemsInfo({ bolsillo, id }) {
+    static async getItemsInfoById({ bolsillo, id }) {
         switch (bolsillo) {
             case "comida":
                 const [comida] = await connection.query(
                     'SELECT * FROM comida WHERE id = ?',
                     [ id ]
                 )
+
                 if (comida.length === 0) return []
+
+                const [comidaLocalizaciones] = await connection.query(
+                    'SELECT nombre, localizacion, anotaciones, precio FROM objetos_localizacion WHERE nombre = ?',
+                    [ comida[0].nombre ]
+                )
+
+                comida[0].localizaciones = comidaLocalizaciones
+
                 return comida
 
             case "objeto":
@@ -50,12 +59,20 @@ export class InventarioModel {
                     'SELECT * FROM objeto WHERE id = ?',
                     [ id ]
                 )
+
                 if (objetos.length === 0) return []
+
+                const [objetoLocalizaciones] = await connection.query(
+                    'SELECT nombre, localizacion, anotaciones, precio FROM objetos_localizacion WHERE nombre = ?',
+                    [ objetos[0].nombre ]
+                )
+
+                objetos[0].localizaciones = objetoLocalizaciones
+
                 return objetos
         
             default:
-                const vacio = {}
-                return vacio
+                return []
         }
     }
 }

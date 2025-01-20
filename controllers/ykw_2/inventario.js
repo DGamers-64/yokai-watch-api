@@ -19,7 +19,7 @@ export class InventarioController {
     static async getItemsInfo(req, res) {
         const { bolsillo, id } = req.params
 
-        const objeto = await InventarioModel.getItemsInfo({ bolsillo, id })
+        const objeto = await InventarioModel.getItemsInfoById({ bolsillo, id })
 
         res.send(objeto)
     }

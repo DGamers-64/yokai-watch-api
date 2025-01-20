@@ -1,6 +1,17 @@
+-- DECLARACIÓN BASE DE DATOS
+
 DROP DATABASE IF EXISTS yokaidb_2;
 CREATE DATABASE yokaidb_2;
 USE yokaidb_2;
+
+-- VARIABLES
+
+SET @png = ".png";
+SET @linkComida = "https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/";
+SET @linkObjeto = "https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/objeto/";
+SET @linkMedalla = "https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/medallas/";
+
+-- TABLAS
 
 CREATE TABLE habilidad (
     nombre VARCHAR(30) PRIMARY KEY,
@@ -43,7 +54,12 @@ CREATE TABLE objeto (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(25),
     imagen TEXT
-)
+);
+
+CREATE TABLE localizacion (
+    nombre VARCHAR(50) PRIMARY KEY,
+    zona VARCHAR(30)
+);
 
 CREATE TABLE inventario (
     nombre VARCHAR(50) PRIMARY KEY,
@@ -97,6 +113,27 @@ CREATE TABLE forma_alt (
     FOREIGN KEY (id_yokai) REFERENCES yokai(id),
     FOREIGN KEY (habilidad) REFERENCES habilidad(nombre)
 );
+
+CREATE TABLE yokai_localizacion (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    yokai INT,
+    localizacion VARCHAR(50),
+    anotaciones VARCHAR(50),
+    FOREIGN KEY (yokai) REFERENCES yokai(id),
+    FOREIGN KEY (localizacion) REFERENCES localizacion(nombre)
+);
+
+CREATE TABLE objetos_localizacion (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50),
+    localizacion VARCHAR(50),
+    anotaciones VARCHAR(50),
+    precio FLOAT,
+    FOREIGN KEY (nombre) REFERENCES inventario(nombre),
+    FOREIGN KEY (localizacion) REFERENCES localizacion(nombre)
+);
+
+-- INSERTADO DE DATOS
 
 INSERT INTO habilidad (nombre, descripcion) VALUES
     ("Despreocupación","Recibe golpes críticos con más frecuencia."),
@@ -192,23 +229,8 @@ INSERT INTO animaximum (nombre, poder, golpes, descripcion) VALUES
     ("¡Victoriaaa!",NULL,NULL,"Mejora todos los atributos de los aliados tras un tiempo en su campamento."),
     ("Puño Abrasador",60,1,"Quema a sus enemigos con el poder llameante de su espíritu de lucha.");
 
---     ("Arroz")
---     ("Pan")
---     ("Chuches")
---     ("Lácteos")
---     ("Hamburguesas")
---     ("Ramen")
---     ("Comida China")
---     ("Verduras")
---     ("Carne")
---     ("Pescado")
---     ("Aperitivos")
---     ("Fideos")
---     ("Chocobarritas")
---     ("Postre")
---     ("Productos cocidos")
-SET @linkComida = "https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/";
-SET @png = ".png";
+-- ("Arroz"),("Pan"),("Chuches"),("Lácteos"),("Hamburguesas"),("Ramen"),("Comida China"),("Verduras"),("Carne"),("Pescado"),("Aperitivos"),("Fideos"),("Chocobarritas"),("Postre"),("Productos cocidos")
+
 INSERT INTO comida (nombre, tipo, imagen) VALUES
     ("Arroz con ciruelas","Arroz",CONCAT(@linkComida, "1", @png)),
     ("Arroz en hoja de col","Arroz",CONCAT(@linkComida, "2", @png)),
@@ -227,18 +249,27 @@ INSERT INTO comida (nombre, tipo, imagen) VALUES
     ("Carne veteada","Carne",CONCAT(@linkComida, "42", @png)),
     ("Chicle de 10","Chuches",CONCAT(@linkComida, "9", @png)),
     ("Chocobarrita","Chocobarritas",CONCAT(@linkComida, "72", @png));
-
-SET @linkObjeto = "https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/objeto/";
 INSERT INTO objeto (nombre, imagen) VALUES
     ("Exporbe S",CONCAT(@linkObjeto, "60", @png)),
     ("Pulsera de fuego",CONCAT(@linkObjeto, "61", @png));
-
 INSERT INTO inventario (nombre, bolsillo, id_interior)
     SELECT nombre, 'Comida', id FROM comida
     UNION
-    SELECT nombre, 'Objetos', id FROM objeto;
-
-SET @linkMedalla = "https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/medallas/";
+    SELECT nombre, 'Objeto', id FROM objeto;
 INSERT INTO yokai (nombre,medalla,tribu,rango,bio,habilidad,ataque,tecnica,animaximum,espiritacion,comida_favorita,comida_odiada,blasters,drop_comun,prob_comun,drop_raro,prob_raro,dinero,experiencia,huecos_obj,fuego,hielo,tierra,rayo,agua,viento) VALUES
     ("Alcaldero",CONCAT(@linkMedalla, "1", @png),"Valiente","E","Un Yo-kai descuidado que solo lleva un taparrabos y una sartén en la cabeza. No intentes imitarlo.","Despreocupación","Pelmapunzadas","Ascuas","Palillo Puntiagudo","A la Ligera","Arroz","Pan","Luchador","Arroz con ciruelas",45,"Exporbe S",17,0.07,28,1,0.7,1,1,1,1.3,1),
     ("Sinná",CONCAT(@linkMedalla,"2",@png),"Valiente","C","Al quitarse la sartén, Sinná está desprotegido ante el mundo. Pero no le verás ni un moratón en el cuerpo ni expresar dolor.","Despreocupación","Multipuñalada","Ascuas","Lluvia de Palillos","Sin Defensa","Arroz","Pan","Luchador","Arroz en hoja de col",55,"Pulsera de fuego",16,0.16,32,1,0.5,1,1,1,1.5,1);
+INSERT INTO localizacion (nombre, zona) VALUES
+    ("La pasarela", "Floridablanca Norte"),
+    ("Floridablanca Norte", "Floridablanca Norte"),
+    ("Expresso", "Gerageralandia"),
+    ("Superhíper Norte", "Floridablanca Norte");
+INSERT INTO yokai_localizacion (yokai, localizacion, anotaciones) VALUES
+    (1, "La pasarela", NULL),
+    (1, "Floridablanca Norte", "Hierba"),
+    (1, "Floridablanca Norte", "Bajo los coches"),
+    (2, "Expresso", "Rango C"),
+    (2, "Expresso", "Valiente");
+INSERT INTO objetos_localizacion (nombre, localizacion, anotaciones, precio) VALUES
+    ("Arroz con ciruelas", "Superhíper Norte", "Precio anterior a preguntabla Abuzampa",1.00),
+    ("Arroz con ciruelas", "Superhíper Norte", "Precio posterior a preguntabla Abuzampa",0.70);
