@@ -7,18 +7,13 @@ export const ykw2Router = Router({ mergeParams: true })
 ykw2Router.get('/', (req, res) => {
     const jsonYKW2 = 
     {
-        'nombreCompleto': 'Yo-Kai Watch 2',
-        'versiones': [
-            'Fantasqueletos',
-            'Carnánimas',
-            'Mentespectros'
-        ],
-        'fechaSalida': {
-            'japón': '10-7-2014',
-            'america': '30-9-2016',
-            'europa': '7-4-2017'
-        },
-        "sinopsis": "El juego trata sobre las aventuras de Nathan Adams, un niño de 11 años al que le roban el reloj Yo-kai, junto a Whisper y Jibanyan, tendrán que adentrarse en el pasado para derrotar a Lady Desdicha, villana principal, y sus secuaces, los Yo-kai maléficos."
+        "rutas": {
+            "/yokai": "Lista de Yo-Kais",
+            "/yokai/:id": "Información de Yo-Kai",
+            "/inventario": "Lista de bolsillos",
+            "/inventario/:bolsillo": "Lista de items en bolsillo",
+            "/inventario/:bolsillo/:id": "Información de item"
+        }
     }
     res.send(jsonYKW2)
 })

@@ -252,14 +252,19 @@ INSERT INTO comida (nombre, tipo, imagen) VALUES
     ("Chicle de 10","Chuches",CONCAT(@linkComida, "9", @png)),
     ("Chocobarrita","Chocobarritas",CONCAT(@linkComida, "72", @png));
 INSERT INTO objeto (nombre, descripcion, efecto, imagen) VALUES
-    ("Resistina", "Esta bebida permite que los humanos corran sin cansarse.","En amigo. Corre sin cansarte durante un tiempo.",CONCAT(@linkObjeto, "58", @png)),
-    ("Resistina Alfa", "El efecto de la Resistina Alfa dura más que el de la normal.","En amigo. Corre sin cansarte durante un tiempo.",CONCAT(@linkObjeto, "59", @png)),
+    ("Date vida","Un libro de motivación para todos los Yo-kai. Sobre todo los vagos.","En amigo. El Yo-kai vaguea menos.",CONCAT(@linkObjeto,"71",@png)),
+    ("Exporbe L", "Otorga la experiencia de tres vidas con solo tocarlo.", "En amigo. Gana 2000 pts. de EXP.", CONCAT(@linkObketo,"62",@png)),
+    ("Exporbe M", "Quien toca este exporbe consigue la experiencia de un maestro.", "En amigo. Gana 500 pts. de EXP.", CONCAT(@linkObjeto,"61",@png)),
     ("Exporbe mini", "Una pizca de este pequeño orbe vale tres horas de entrenamiento.","En amigo. Gana 10 pts. de EXP.",CONCAT(@linkObjeto, "19", @png)),
     ("Exporbe S", "Tres días de entrenamiento con solo tocar este exporbe.", "En amigo. Gana 50 pts. de EXP.", CONCAT(@linkObjeto,"60",@png)),
-    ("Exporbe M", "Quien toca este exporbe consigue la experiencia de un maestro.", "En amigo. Gana 500 pts. de EXP.", CONCAT(@linkObjeto,"61",@png)),
-    ("Exporbe L", "Otorga la experiencia de tres vidas con solo tocarlo.", "En amigo. Gana 2000 pts. de EXP.", CONCAT(@linkObketo,"62",@png)),
-    ("")
-    ("Golpes Secretos",CONCAT(@linkObjeto,"62",@png)),
+    ("Exporbe sagrado", "","En amigo. Gana 20.000 pts. de EXP.", CONCAT(@linkObjeto,"64",@png)), -- BUSCAR DESCRIPCION
+    ("Exporbe XL", "Contiene la sabiudría de algunas de las mentes más brillantes.","En amigo. Gana 8000 pts. de EXP.", CONCAT(@linkObjeto,"63",@png)),
+    ("Golpes secretos","Un libro de secretos de combate. ¡Serás un profesional del ataque!","En amigo. Nivel +1 a un ataque.",CONCAT(@linkObjeto,"68",@png)),
+    ("Resistina", "Esta bebida permite que los humanos corran sin cansarse.","En amigo. Corre sin cansarte durante un tiempo.",CONCAT(@linkObjeto, "58", @png)),
+    ("Resistina Alfa", "El efecto de la Resistina Alfa dura más que el de la normal.","En amigo. Corre sin cansarte durante un tiempo.",CONCAT(@linkObjeto, "59", @png)),
+    ("Secretos del alma","Un libro sobre los secretos del animáximum.","En amigo. Nivel +1 a un animáximum.",CONCAT(@linkObjeto,"70",@png)),
+    ("Técnicas a tope","Mejora tus técnicas con la ayuda de este libro didáctico.","En amigo. Nivel +1 a una técnica.",CONCAT(@linkObjeto,"69",@png)),
+
     ("Pulsera de fuego","asd","asd",CONCAT(@linkObjeto, "61", @png)); -- CAMBIAR A EQUIPAMIENTO
 INSERT INTO inventario (nombre, bolsillo, id_interior)
     SELECT nombre, 'Comida', id FROM comida
@@ -268,7 +273,7 @@ INSERT INTO inventario (nombre, bolsillo, id_interior)
 INSERT INTO yokai (nombre,medalla,tribu,rango,bio,habilidad,ataque,tecnica,animaximum,espiritacion,comida_favorita,comida_odiada,blasters,drop_comun,prob_comun,drop_raro,prob_raro,dinero,experiencia,huecos_obj,fuego,hielo,tierra,rayo,agua,viento) VALUES
     ("Alcaldero",CONCAT(@linkMedalla, "1", @png),"Valiente","E","Un Yo-kai descuidado que solo lleva un taparrabos y una sartén en la cabeza. No intentes imitarlo.","Despreocupación","Pelmapunzadas","Ascuas","Palillo Puntiagudo","A la Ligera","Arroz","Pan","Luchador","Arroz con ciruelas",45,"Exporbe S",17,0.07,28,1,0.7,1,1,1,1.3,1),
     ("Sinná",CONCAT(@linkMedalla,"2",@png),"Valiente","C","Al quitarse la sartén, Sinná está desprotegido ante el mundo. Pero no le verás ni un moratón en el cuerpo ni expresar dolor.","Despreocupación","Multipuñalada","Ascuas","Lluvia de Palillos","Sin Defensa","Arroz","Pan","Luchador","Arroz en hoja de col",55,"Pulsera de fuego",16,0.16,32,1,0.5,1,1,1,1.5,1),
-    ("Sinnarenno",CONCAT(@linkMedalla,"3",@png),"Valiente","B","Un Yo-kai que siempre está dispuesto a combatir. Sin ropa que lo ralentice, siempre llega temprano y se pone moreno.","Despreocupación","Multipuñalada","Guijarro","Corte Profundo","Atrevimiento","Arroz","Pan","Luchador","Arroz con huevas",50,"Golpes Secretos",5,0.21,38,2,1,1,0.5,0.5,1,1.8);
+    ("Sinnarenno",CONCAT(@linkMedalla,"3",@png),"Valiente","B","Un Yo-kai que siempre está dispuesto a combatir. Sin ropa que lo ralentice, siempre llega temprano y se pone moreno.","Despreocupación","Multipuñalada","Guijarro","Corte Profundo","Atrevimiento","Arroz","Pan","Luchador","Arroz con huevas",50,"Golpes secretos",5,0.21,38,2,1,1,0.5,0.5,1,1.8);
 INSERT INTO localizacion (nombre, zona) VALUES
     ("La pasarela", "Floridablanca Norte"),
     ("Floridablanca Norte", "Floridablanca Norte"),
