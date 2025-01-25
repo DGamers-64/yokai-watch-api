@@ -13,7 +13,7 @@ export class YokaiController {
 
         let yokai
 
-        if(!isNaN(id)) {
+        if (!isNaN(id)) {
             yokai = await YokaiModel.getYokaiById({ id })
         } else {
             yokai = await YokaiModel.getYokaiByName({ nombre: id })

@@ -16,10 +16,16 @@ export class InventarioController {
         res.send(listaObjetos)
     }
 
-    static async getItemsInfo(req, res) {
+    static async getItemsInfoByParam(req, res) {
         const { bolsillo, id } = req.params
 
-        const objeto = await InventarioModel.getItemsInfoById({ bolsillo, id })
+        let objeto 
+        
+        if (!isNaN(id)) {
+            objeto = await InventarioModel.getItemsInfoById({ bolsillo, id })
+        } else {
+            objeto = await InventarioModel.getItemsInfoByName({ bolsillo, nombre: id })
+        }
 
         res.send(objeto)
     }

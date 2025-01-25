@@ -10,6 +10,7 @@ SET @png = ".png";
 SET @linkComida = "https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/comida/";
 SET @linkObjeto = "https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/objeto/";
 SET @linkMedalla = "https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/medallas/";
+SET @linkEquipamiento = "https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/equipamiento/";
 
 -- TABLAS
 
