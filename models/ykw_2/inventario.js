@@ -205,8 +205,8 @@ export class InventarioModel {
 
             case "objeto":
                 const [objetos] = await connection.query(
-                    'SELECT * FROM objeto WHERE id = ?',
-                    [ id ]
+                    'SELECT * FROM objeto WHERE nombre = ?',
+                    [ nombre ]
                 )
 
                 if (objetos.length === 0) return []
@@ -243,8 +243,8 @@ export class InventarioModel {
             
             case "equipamiento":
                 const [equipamiento] = await connection.query(
-                    'SELECT * FROM equipamiento WHERE id = ?',
-                    [ id ]
+                    'SELECT * FROM equipamiento WHERE nombre = ?',
+                    [ nombre ]
                 )
 
                 if (equipamiento.length === 0) return []
