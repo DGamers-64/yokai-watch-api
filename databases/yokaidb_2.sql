@@ -46,11 +46,20 @@ CREATE TABLE animaximum (
 CREATE TABLE comida (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(25),
+    descripcion VARCHAR(90),
     tipo VARCHAR(20),
     imagen TEXT
 );
 
 CREATE TABLE objeto (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(25),
+    descripcion VARCHAR(90),
+    efecto VARCHAR(50),
+    imagen TEXT
+);
+
+CREATE TABLE equipamiento (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(25),
     descripcion VARCHAR(90),
@@ -126,6 +135,16 @@ CREATE TABLE yokai_localizacion (
 );
 
 CREATE TABLE objetos_localizacion (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50),
+    localizacion VARCHAR(50),
+    anotaciones VARCHAR(50),
+    precio FLOAT,
+    FOREIGN KEY (nombre) REFERENCES inventario(nombre),
+    FOREIGN KEY (localizacion) REFERENCES localizacion(nombre)
+);
+
+CREATE TABLE equipamiento_localizacion (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50),
     localizacion VARCHAR(50),
@@ -233,58 +252,79 @@ INSERT INTO animaximum (nombre, poder, golpes, descripcion) VALUES
 
 -- ("Arroz"),("Pan"),("Chuches"),("Lácteos"),("Hamburguesas"),("Ramen"),("Comida China"),("Verduras"),("Carne"),("Pescado"),("Aperitivos"),("Fideos"),("Chocobarritas"),("Postre"),("Productos cocidos")
 
-INSERT INTO comida (nombre, tipo, imagen) VALUES
-    ("Arroz con ciruelas","Arroz",CONCAT(@linkComida, "1", @png)),
-    ("Arroz en hoja de col","Arroz",CONCAT(@linkComida, "2", @png)),
-    ("Arroz con huevas","Arroz",CONCAT(@linkComida, "3", @png)),
-    ("Arroz con gambas","Arroz",CONCAT(@linkComida, "4", @png)),
-    ("Atún selecto","Pescado",CONCAT(@linkComida, "46", @png)),
-    ("Baguette","Pan",CONCAT(@linkComida, "7", @png)),
-    ("Bollo con crema","Pan",CONCAT(@linkComida, "6", @png)),
-    ("Brochetas de carne","Productos cocidos",CONCAT(@linkComida, "68", @png)),
-    ("Brote de bambú","Verduras",CONCAT(@linkComida, "37", @png)),
-    ("Caballa en salazón","Pescado",CONCAT(@linkComida, "43", @png)),
-    ("Café con leche","Lácteos",CONCAT(@linkComida, "16", @png)),
-    ("Caramelo pegajoso","Chuches",CONCAT(@linkComida, "10", @png)),
-    ("Caramelos de frutas","Chuches",CONCAT(@linkComida, "12", @png)),
-    ("Carnanibollo","Postre",CONCAT(@linkComida, "74", @png)),
-    ("Carne veteada","Carne",CONCAT(@linkComida, "42", @png)),
-    ("Chicle de 10","Chuches",CONCAT(@linkComida, "9", @png)),
-    ("Chocobarrita","Chocobarritas",CONCAT(@linkComida, "72", @png));
+INSERT INTO comida (nombre, descripcion, tipo, imagen) VALUES
+    ("Chocobarrita","El dulce de chocolate favorito de los Yo-kai gatos.","Chocobarritas",CONCAT(@linkComida, "72", @png)),
+    ("Arroz con ciruelas","Triángulo de arroz con ciruelas dentro. Está un poco amargo.","Arroz",CONCAT(@linkComida, "1", @png)),
+    ("Arroz en hoja de col","Triángulo de arroz envuelto en una hoja de col. Le da sabor.","Arroz",CONCAT(@linkComida, "2", @png)),
+    ("Arroz con huevas","Triángulo de arroz con huevas de salmón. ¡Son huevos de pescado!","Arroz",CONCAT(@linkComida, "3", @png)),
+    ("Arroz con gambas","Suculento arroz con tempura recién hecha. ¡Es puro arte!","Arroz",CONCAT(@linkComida, "4", @png)),
+    ("Sándwich","Un sándwich común. Jamón y lechuga en pan de molde blanco.","Pan",CONCAT(@linkComida, "5", @png)),
+    ("Bollo con crema","A todos les gusta el bollo con crema. ¡Está delicioso!","Pan",CONCAT(@linkComida, "6", @png)),
+    ("Baguette","Está un poco dura, pero es una auténtica baguette.","Pan",CONCAT(@linkComida, "7", @png)),
+    ("Rosca lenguaraz","La reputación de la Panadería Chacharal depende de esta rosca.","Pan",CONCAT(@linkComida, "8", @png)),
+    ("Chicle de 10","Un chicle tan barato que no hacen falta motivos para comprarlo.","Chuches",CONCAT(@linkComida, "9", @png)),
+    ("Caramelo pegajoso","Este caramelo pegajoso sabe mejor tras juguetear con él.","Chuches",CONCAT(@linkComida, "10", @png)),
+    ("Galleta gigante","Una galleta gigante que sabe a gamba. ¡Es muy popular!","Chuches",CONCAT(@linkComida, "11", @png)),
+    ("Caramelos de frutas","","Chuches",CONCAT(@linkComida, "12", @png)),
+    ("Café con leche","","Lácteos",CONCAT(@linkComida, "16", @png)),
+    ("Brote de bambú","","Verduras",CONCAT(@linkComida, "37", @png)),
+    ("Carne veteada","","Carne",CONCAT(@linkComida, "42", @png)),
+    ("Caballa en salazón","","Pescado",CONCAT(@linkComida, "43", @png)),
+    ("Atún selecto","Atún de excepcional calidad. ¡Los ricos dicen que adoran su textura!","Pescado",CONCAT(@linkComida, "46", @png)),
+    ("Brochetas de carne","","Productos cocidos",CONCAT(@linkComida, "68", @png)),
+    ("Carnanibollo","","Postre",CONCAT(@linkComida, "74", @png));
 INSERT INTO objeto (nombre, descripcion, efecto, imagen) VALUES
     ("Date vida","Un libro de motivación para todos los Yo-kai. Sobre todo los vagos.","En amigo. El Yo-kai vaguea menos.",CONCAT(@linkObjeto,"71",@png)),
-    ("Exporbe L", "Otorga la experiencia de tres vidas con solo tocarlo.", "En amigo. Gana 2000 pts. de EXP.", CONCAT(@linkObketo,"62",@png)),
+    ("Exporbe L", "Otorga la experiencia de tres vidas con solo tocarlo.", "En amigo. Gana 2000 pts. de EXP.", CONCAT(@linkObjeto,"62",@png)),
     ("Exporbe M", "Quien toca este exporbe consigue la experiencia de un maestro.", "En amigo. Gana 500 pts. de EXP.", CONCAT(@linkObjeto,"61",@png)),
     ("Exporbe mini", "Una pizca de este pequeño orbe vale tres horas de entrenamiento.","En amigo. Gana 10 pts. de EXP.",CONCAT(@linkObjeto, "19", @png)),
     ("Exporbe S", "Tres días de entrenamiento con solo tocar este exporbe.", "En amigo. Gana 50 pts. de EXP.", CONCAT(@linkObjeto,"60",@png)),
-    ("Exporbe sagrado", "","En amigo. Gana 20.000 pts. de EXP.", CONCAT(@linkObjeto,"64",@png)), -- BUSCAR DESCRIPCION
+    ("Exporbe sagrado", "Una lagartija diminuta tocó este orbe y ahora es un dinosaurio","En amigo. Gana 20.000 pts. de EXP.", CONCAT(@linkObjeto,"64",@png)),
     ("Exporbe XL", "Contiene la sabiudría de algunas de las mentes más brillantes.","En amigo. Gana 8000 pts. de EXP.", CONCAT(@linkObjeto,"63",@png)),
     ("Golpes secretos","Un libro de secretos de combate. ¡Serás un profesional del ataque!","En amigo. Nivel +1 a un ataque.",CONCAT(@linkObjeto,"68",@png)),
     ("Resistina", "Esta bebida permite que los humanos corran sin cansarse.","En amigo. Corre sin cansarte durante un tiempo.",CONCAT(@linkObjeto, "58", @png)),
     ("Resistina Alfa", "El efecto de la Resistina Alfa dura más que el de la normal.","En amigo. Corre sin cansarte durante un tiempo.",CONCAT(@linkObjeto, "59", @png)),
     ("Secretos del alma","Un libro sobre los secretos del animáximum.","En amigo. Nivel +1 a un animáximum.",CONCAT(@linkObjeto,"70",@png)),
-    ("Técnicas a tope","Mejora tus técnicas con la ayuda de este libro didáctico.","En amigo. Nivel +1 a una técnica.",CONCAT(@linkObjeto,"69",@png)),
+    ("Técnicas a tope","Mejora tus técnicas con la ayuda de este libro didáctico.","En amigo. Nivel +1 a una técnica.",CONCAT(@linkObjeto,"69",@png));
 
-    ("Pulsera de fuego","asd","asd",CONCAT(@linkObjeto, "61", @png)); -- CAMBIAR A EQUIPAMIENTO
+INSERT INTO equipamiento (nombre, descripcion, efecto, imagen) VALUES
+    ("Pulsera de fuego","Quien la lleva puede aplastar manzanas con sus propias manos","Fuerza +18 Defensa -8",CONCAT(@linkEquipamiento, "38", @png));
 INSERT INTO inventario (nombre, bolsillo, id_interior)
     SELECT nombre, 'Comida', id FROM comida
     UNION
-    SELECT nombre, 'Objeto', id FROM objeto;
+    SELECT nombre, 'Objeto', id FROM objeto
+    UNION
+    SELECT nombre, 'Equipamiento', id FROM equipamiento;
 INSERT INTO yokai (nombre,medalla,tribu,rango,bio,habilidad,ataque,tecnica,animaximum,espiritacion,comida_favorita,comida_odiada,blasters,drop_comun,prob_comun,drop_raro,prob_raro,dinero,experiencia,huecos_obj,fuego,hielo,tierra,rayo,agua,viento) VALUES
     ("Alcaldero",CONCAT(@linkMedalla, "1", @png),"Valiente","E","Un Yo-kai descuidado que solo lleva un taparrabos y una sartén en la cabeza. No intentes imitarlo.","Despreocupación","Pelmapunzadas","Ascuas","Palillo Puntiagudo","A la Ligera","Arroz","Pan","Luchador","Arroz con ciruelas",45,"Exporbe S",17,0.07,28,1,0.7,1,1,1,1.3,1),
     ("Sinná",CONCAT(@linkMedalla,"2",@png),"Valiente","C","Al quitarse la sartén, Sinná está desprotegido ante el mundo. Pero no le verás ni un moratón en el cuerpo ni expresar dolor.","Despreocupación","Multipuñalada","Ascuas","Lluvia de Palillos","Sin Defensa","Arroz","Pan","Luchador","Arroz en hoja de col",55,"Pulsera de fuego",16,0.16,32,1,0.5,1,1,1,1.5,1),
-    ("Sinnarenno",CONCAT(@linkMedalla,"3",@png),"Valiente","B","Un Yo-kai que siempre está dispuesto a combatir. Sin ropa que lo ralentice, siempre llega temprano y se pone moreno.","Despreocupación","Multipuñalada","Guijarro","Corte Profundo","Atrevimiento","Arroz","Pan","Luchador","Arroz con huevas",50,"Golpes secretos",5,0.21,38,2,1,1,0.5,0.5,1,1.8);
+    ("Sinnareno",CONCAT(@linkMedalla,"3",@png),"Valiente","B","Un Yo-kai que siempre está dispuesto a combatir. Sin ropa que lo ralentice, siempre llega temprano y se pone moreno.","Despreocupación","Multipuñalada","Guijarro","Corte Profundo","Atrevimiento","Arroz","Pan","Luchador","Arroz con huevas",50,"Golpes secretos",5,0.21,38,2,1,1,0.5,0.5,1,1.8);
 INSERT INTO localizacion (nombre, zona) VALUES
-    ("La pasarela", "Floridablanca Norte"),
+    ("Calle inhóspita", "Floridablanca Norte"),
     ("Floridablanca Norte", "Floridablanca Norte"),
-    ("Expresso", "Gerageralandia"),
-    ("Superhíper Norte", "Floridablanca Norte");
+    ("Maldiexprés", "Gerageralandia"),
+    ("Superhíper Norte", "Floridablanca Norte"),
+    ("Túnel Infinito", "Vellón"),
+    ("Camino misterioso", "San Fantástico"),
+    ("La pasarela", "Floridablanca Norte"),
+    ("Colegio de Floridablanca", "Floridablanca Norte"),
+    ("Portales místicos", "Portales místicos"),
+    ("Evolución", "Evolución"),
+    ("Infierno Infinito", "Infierno Infinito");
 INSERT INTO yokai_localizacion (yokai, localizacion, anotaciones) VALUES
     (1, "La pasarela", NULL),
     (1, "Floridablanca Norte", "Hierba"),
     (1, "Floridablanca Norte", "Bajo los coches"),
-    (2, "Expresso", "Rango C"),
-    (2, "Expresso", "Valiente");
+    (1, "Infierno Infinito", "1-3er Círculo"),
+    (1, "Camino misterioso", "Ruta 2"),
+    (1, "Maldiexprés", "Rango E"),
+    (1, "Maldiexprés", "Valiente"),
+    (1, "Calle inhóspita", NULL),
+    (1, "Colegio de Floridablanca", "Pisos 1-3, Noche"),
+    (1, "Portales místicos", NULL),
+    (2, "Evolución", "Alcaldero, Nivel 18"),
+    (2, "Maldiexprés", "Rango C"),
+    (2, "Maldiexprés", "Valiente");
 INSERT INTO objetos_localizacion (nombre, localizacion, anotaciones, precio) VALUES
     ("Arroz con ciruelas", "Superhíper Norte", "Precio anterior a preguntabla Abuzampa",1.00),
     ("Arroz con ciruelas", "Superhíper Norte", "Precio posterior a preguntabla Abuzampa",0.70);

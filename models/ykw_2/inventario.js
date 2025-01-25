@@ -17,14 +17,14 @@ export class InventarioModel {
         switch (bolsillo) {
             case "comida":
                 const [comida] = await connection.query(
-                    'SELECT * FROM comida'
+                    'SELECT id, nombre, tipo FROM comida'
                 )
                 if (comida.length === 0) return []
                 return comida
 
             case "objeto":
                 const [objetos] = await connection.query(
-                    'SELECT * FROM objeto'
+                    'SELECT id, nombre FROM objeto'
                 )
                 if (objetos.length === 0) return []
                 return objetos
@@ -70,6 +70,23 @@ export class InventarioModel {
                 objetos[0].localizaciones = objetoLocalizaciones
 
                 return objetos
+            
+            case "equipamiento":
+                const [equipamiento] = await connection.query(
+                    'SELECT * FROM objeto WHERE id = ?',
+                    [ id ]
+                )
+
+                if (equipamiento.length === 0) return []
+
+                const [equipamientoLocalizaciones] = await connection.query(
+                    'SELECT nombre, localizacion, anotaciones, precio FROM objetos_localizacion WHERE nombre = ?',
+                    [ equipamiento[0].nombre ]
+                )
+
+                equipamiento[0].localizaciones = equipamientoLocalizaciones
+
+                return equipamiento
         
             default:
                 return []
