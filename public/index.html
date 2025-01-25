@@ -1,11 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yokai API</title>
+    <script src="estadisticas.js"></script>
+    <script src="busqueda.js"></script>
 </head>
 <body>
-    <h1>YokAPI is live!</h1>
+    <section>
+        <p id="yokapi">YokAPI is live!</p>
+        <div class="flexbox">
+            <article>
+                <input type="text" id="busquedaYokai" placeholder="Escribe un Yo-Kai..." tabindex="1" autofocus> <button onclick="buscarYokai()" id="botonBuscarYokai">Buscar</button>
+                <article id="infoYokai" class="infoBloque"></article>
+            </article>
+            <article>
+                <input type="text" id="busquedaObjeto" placeholder="Escribe un objeto..." tabindex="2" autofocus> <button onclick="buscarObjeto()" id="botonBuscarObjeto">Buscar</button>
+                <article id="infoObjeto" class="infoBloque"></article>
+            </article>
+            <article>
+                <input type="text" id="busquedaComida" placeholder="Escribe un comida..." tabindex="2" autofocus> <button onclick="buscarComida()" id="botonBuscarComida">Buscar</button>
+                <article id="infoComida" class="infoBloque"></article>
+            </article>
+        </div>
+    </section>
+    <section>
+        <button onclick="estadisticas()" id="botonEstadisticas">Obtener estadísticas</button><br>
+        <div id="estadisticas">
+            <p><b>Yokais insertados en la API</b>: <span id="ykInsertados"></span>/448 | <span id="ykPorcentaje"></span>%</p>
+            <p><b>Objetos insertados en la API</b>: <span id="objetosInsertados"></span>/127 | <span id="objetosPorcentaje"></span>%</p>
+            <p><b>Comida insertada en la API</b>: <span id="comidaInsertados"></span>/127 | <span id="comidaPorcentaje"></span>%</p>
+            <p><b>Equipamiento insertado en la API</b>: <span id="equipamientoInsertados"></span>/127 | <span id="equipamientoPorcentaje"></span>%</p>
+            <p id="porcentajeTotalParrafo"><b>Total</b>: <span id="porcentajeTotal"></span>%</p>
+        </div>
+    </section>
 </body>
 </html>
