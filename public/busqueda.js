@@ -81,3 +81,31 @@ async function buscarComida() {
             tablaInfo.appendChild(descripcion)
         })
 }
+
+async function buscarEquipamiento() {
+    const buscar = document.getElementById("busquedaEquipamiento").value
+    const tablaInfo = document.getElementById("infoEquipamiento")
+    await fetch(`http://localhost:3000/ykw2/inventario/equipamiento/${buscar}`)
+        .then(res => res.json())
+        .then(data => {
+            equipamiento = data[0]
+            const titulo = document.createElement("p")
+            const imagen = document.createElement("img")
+            const descripcion = document.createElement("span")
+
+            titulo.className = "tituloInfo"
+            imagen.className = "imagenInfo"
+            descripcion.className = "descripcionInfo"
+
+            titulo.innerHTML = equipamiento.nombre
+            imagen.src = equipamiento.imagen
+            descripcion.innerHTML = equipamiento.descripcion
+
+            tablaInfo.innerHTML = ""
+            tablaInfo.style.display = "block"
+            
+            tablaInfo.appendChild(titulo)
+            tablaInfo.appendChild(imagen)
+            tablaInfo.appendChild(descripcion)
+        })
+}

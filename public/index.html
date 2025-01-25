@@ -13,16 +13,20 @@
         <p id="yokapi">YokAPI is live!</p>
         <div class="flexbox">
             <article>
-                <input type="text" id="busquedaYokai" placeholder="Escribe un Yo-Kai..." tabindex="1" autofocus> <button onclick="buscarYokai()" id="botonBuscarYokai">Buscar</button>
+                <input type="text" id="busquedaYokai" placeholder="Escribe un Yo-Kai..." tabindex="1"> <button onclick="buscarYokai()" id="botonBuscarYokai">Buscar</button>
                 <article id="infoYokai" class="infoBloque"></article>
             </article>
             <article>
-                <input type="text" id="busquedaObjeto" placeholder="Escribe un objeto..." tabindex="2" autofocus> <button onclick="buscarObjeto()" id="botonBuscarObjeto">Buscar</button>
+                <input type="text" id="busquedaObjeto" placeholder="Escribe un objeto..." tabindex="2"> <button onclick="buscarObjeto()" id="botonBuscarObjeto">Buscar</button>
                 <article id="infoObjeto" class="infoBloque"></article>
             </article>
             <article>
-                <input type="text" id="busquedaComida" placeholder="Escribe un comida..." tabindex="2" autofocus> <button onclick="buscarComida()" id="botonBuscarComida">Buscar</button>
+                <input type="text" id="busquedaComida" placeholder="Escribe una comida..." tabindex="2"> <button onclick="buscarComida()" id="botonBuscarComida">Buscar</button>
                 <article id="infoComida" class="infoBloque"></article>
+            </article>
+            <article>
+                <input type="text" id="busquedaEquipamiento" placeholder="Escribe un equipamiento..." tabindex="2"> <button onclick="buscarEquipamiento()" id="botonBuscarEquipamiento">Buscar</button>
+                <article id="infoEquipamiento" class="infoBloque"></article>
             </article>
         </div>
     </section>
@@ -30,9 +34,9 @@
         <button onclick="estadisticas()" id="botonEstadisticas">Obtener estadísticas</button><br>
         <div id="estadisticas">
             <p><b>Yokais insertados en la API</b>: <span id="ykInsertados"></span>/448 | <span id="ykPorcentaje"></span>%</p>
+            <p><b>Comida insertada en la API</b>: <span id="comidaInsertados"></span>/71 | <span id="comidaPorcentaje"></span>%</p>
             <p><b>Objetos insertados en la API</b>: <span id="objetosInsertados"></span>/127 | <span id="objetosPorcentaje"></span>%</p>
-            <p><b>Comida insertada en la API</b>: <span id="comidaInsertados"></span>/127 | <span id="comidaPorcentaje"></span>%</p>
-            <p><b>Equipamiento insertado en la API</b>: <span id="equipamientoInsertados"></span>/127 | <span id="equipamientoPorcentaje"></span>%</p>
+            <p><b>Equipamiento insertado en la API</b>: <span id="equipamientoInsertados"></span>/67 | <span id="equipamientoPorcentaje"></span>%</p>
             <p id="porcentajeTotalParrafo"><b>Total</b>: <span id="porcentajeTotal"></span>%</p>
         </div>
     </section>
