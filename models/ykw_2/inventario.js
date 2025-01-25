@@ -28,6 +28,13 @@ export class InventarioModel {
                 )
                 if (objetos.length === 0) return []
                 return objetos
+
+            case "equipamiento":
+                const [equipamiento] = await connection.query(
+                    'SELECT id, nombre FROM equipamiento'
+                )
+                if (equipamiento.length === 0) return []
+                return equipamiento
         
             default:
                 const vacio = {}
@@ -52,6 +59,25 @@ export class InventarioModel {
 
                 comida[0].localizaciones = comidaLocalizaciones
 
+                const [dropsComida] = await connection.query(
+                    'SELECT id, nombre, drop_comun, prob_comun, drop_raro, prob_raro FROM yokai WHERE drop_comun = ? OR drop_raro = ?',
+                    [ comida[0].nombre, comida[0].nombre ]
+                )
+
+                if (dropsComida.length > 0) {
+                    dropsComida.forEach(i => {
+                        if (comida.nombre == i.drop_comun) {
+                            delete i.drop_raro
+                            delete i.prob_raro
+                        } else {
+                            delete i.drop_comun
+                            delete i.prob_comun
+                        }
+                    });
+                }
+                
+                comida[0].drops = dropsComida
+
                 return comida
 
             case "objeto":
@@ -69,11 +95,30 @@ export class InventarioModel {
 
                 objetos[0].localizaciones = objetoLocalizaciones
 
+                const [dropsObjetos] = await connection.query(
+                    'SELECT id, nombre, drop_comun, prob_comun, drop_raro, prob_raro FROM yokai WHERE drop_comun = ? OR drop_raro = ?',
+                    [ objetos[0].nombre, objetos[0].nombre ]
+                )
+
+                if (dropsObjetos.length > 0) {
+                    dropsObjetos.forEach(i => {
+                        if (objetos.nombre == i.drop_comun) {
+                            delete i.drop_raro
+                            delete i.prob_raro
+                        } else {
+                            delete i.drop_comun
+                            delete i.prob_comun
+                        }
+                    });
+                }
+                
+                objetos[0].drops = dropsObjetos
+
                 return objetos
             
             case "equipamiento":
                 const [equipamiento] = await connection.query(
-                    'SELECT * FROM objeto WHERE id = ?',
+                    'SELECT * FROM equipamiento WHERE id = ?',
                     [ id ]
                 )
 
@@ -85,6 +130,25 @@ export class InventarioModel {
                 )
 
                 equipamiento[0].localizaciones = equipamientoLocalizaciones
+
+                const [dropsEquipamiento] = await connection.query(
+                    'SELECT id, nombre, drop_comun, prob_comun, drop_raro, prob_raro FROM yokai WHERE drop_comun = ? OR drop_raro = ?',
+                    [ equipamiento[0].nombre, equipamiento[0].nombre ]
+                )
+
+                if (dropsEquipamiento.length > 0) {
+                    dropsEquipamiento.forEach(i => {
+                        if (equipamiento.nombre == i.drop_comun) {
+                            delete i.drop_raro
+                            delete i.prob_raro
+                        } else {
+                            delete i.drop_comun
+                            delete i.prob_comun
+                        }
+                    });
+                }
+                
+                equipamiento[0].drops = dropsEquipamiento
 
                 return equipamiento
         

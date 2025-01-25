@@ -38,7 +38,7 @@ app.use('/ykw2', ykw2Router)
 
 // app.use('/ykwb', ykwBlastersRouter)
 
-app.get('/:otros', (req, res) => {
+app.use((req, res) => {
     res.status(404).send({ res: `Error 404: ${req.url}`})
 })
 
