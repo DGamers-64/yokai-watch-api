@@ -66,13 +66,31 @@ function comprobarEquipamiento() {
     });
 }
 
-function porcentajes() {
+function calcularMediaPonderada() {
     const porcentajeYokai = parseFloat(document.getElementById("ykPorcentaje").innerHTML)
     const porcentajeObjetos = parseFloat(document.getElementById("objetosPorcentaje").innerHTML)
     const porcentajeComida = parseFloat(document.getElementById("comidaPorcentaje").innerHTML)
     const porcentajeEquipamiento = parseFloat(document.getElementById("equipamientoPorcentaje").innerHTML)
+
+    const valores = [porcentajeYokai, porcentajeObjetos, porcentajeComida, porcentajeEquipamiento]
+    const pesos = [448, 74, 127, 67]
+
     const porcentajeTotal = document.getElementById("porcentajeTotal")
-    const total = (porcentajeYokai + porcentajeObjetos + porcentajeComida + porcentajeEquipamiento) / 4
+
+    if (valores.length !== pesos.length) {
+        throw new Error('Los arreglos de valores y pesos deben tener la misma longitud');
+    }
+
+    let sumaProductos = 0;
+    let sumaPesos = 0;
+
+    for (let i = 0; i < valores.length; i++) {
+        sumaProductos += valores[i] * pesos[i];
+        sumaPesos += pesos[i];
+    }
+
+    total = sumaProductos / sumaPesos
+
     porcentajeTotal.innerHTML = total.toFixed(2)
 }
 
@@ -81,7 +99,7 @@ async function estadisticas() {
     await comprobarObjetos()
     await comprobarComida()
     await comprobarEquipamiento()
-    porcentajes()
+    calcularMediaPonderada()
     const estadisticas = document.getElementById("estadisticas")
     estadisticas.style.display = "block"
 }
