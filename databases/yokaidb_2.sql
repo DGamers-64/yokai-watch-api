@@ -11,6 +11,7 @@ SET @linkComida = "https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/
 SET @linkObjeto = "https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/objeto/";
 SET @linkMedalla = "https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/medallas/";
 SET @linkEquipamiento = "https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/equipamiento/";
+SET @linkAnimal = "https://raw.githubusercontent.com/DGamers-64/yokai-watch-api/refs/heads/master/img/items/animal/";
 
 -- TABLAS
 
@@ -44,6 +45,11 @@ CREATE TABLE animaximum (
     golpes INT
 );
 
+CREATE TABLE localizacion (
+    nombre VARCHAR(50) PRIMARY KEY,
+    zona VARCHAR(30)
+);
+
 CREATE TABLE comida (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(25),
@@ -68,9 +74,15 @@ CREATE TABLE equipamiento (
     imagen TEXT
 );
 
-CREATE TABLE localizacion (
-    nombre VARCHAR(50) PRIMARY KEY,
-    zona VARCHAR(30)
+CREATE TABLE animal (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(25),
+    tipo VARCHAR(5),
+    descripcion VARCHAR(90),
+    localizacion VARCHAR(50),
+    anotaciones VARCHAR(30),
+    imagen TEXT,
+    FOREIGN KEY (localizacion) REFERENCES localizacion(nombre)
 );
 
 CREATE TABLE inventario (
@@ -87,7 +99,7 @@ CREATE TABLE yokai (
     medalla TEXT,
     tribu VARCHAR(20),
     rango VARCHAR(5),
-    bio TEXT,
+    bio VARCHAR(150),
     habilidad VARCHAR(30),
     ataque VARCHAR(25),
     tecnica VARCHAR(25),
@@ -250,6 +262,18 @@ INSERT INTO animaximum (nombre, poder, golpes, descripcion) VALUES
     ("Truco Sucio",100,1,"Concentra su ira en atacar a sus enemigos y quitarles su FUE."),
     ("¡Victoriaaa!",NULL,NULL,"Mejora todos los atributos de los aliados tras un tiempo en su campamento."),
     ("Puño Abrasador",60,1,"Quema a sus enemigos con el poder llameante de su espíritu de lucha.");
+INSERT INTO localizacion (nombre, zona) VALUES
+    ("Calle inhóspita", "Floridablanca Norte"),
+    ("Floridablanca Norte", "Floridablanca Norte"),
+    ("Maldiexprés", "Gerageralandia"),
+    ("Superhíper Norte", "Floridablanca Norte"),
+    ("Túnel Infinito", "Vellón"),
+    ("Camino misterioso", "San Fantástico"),
+    ("La pasarela", "Floridablanca Norte"),
+    ("Colegio de Floridablanca", "Floridablanca Norte"),
+    ("Portales místicos", "Portales místicos"),
+    ("Evolución", "Evolución"),
+    ("Infierno Infinito", "Infierno Infinito");
 
 INSERT INTO comida (nombre, descripcion, tipo, imagen) VALUES
     ("Chocobarrita","El dulce de chocolate favorito de los Yo-kai gatos.","Chocobarritas",CONCAT(@linkComida, "72", @png)),
@@ -326,6 +350,9 @@ INSERT INTO comida (nombre, descripcion, tipo, imagen) VALUES
     ("Saladitos","Quien avisa no es traidor: si empiezas, ¡no podrás parar!","Aperitivos",CONCAT(@linkComida,"50",@png)),
     ("Palomitas de queso","Bolsa de aperitivos de maíz salados recubiertso de queso.","Aperitivos",CONCAT(@linkComida,"51",@png)),
     ("Guisantes aperitivo","Los guisantes blancos crujientes son la debilidad de todo padre.","Aperitivos",CONCAT(@linkComida,"52",@png));
+INSERT INTO animal (nombre, tipo, descripcion, localizacion, anotaciones, imagen) VALUES
+    ("Cigarra verde","Bicho","¡Una cigarra verde que canta una canción que recuerda al verano!","Floridablanca Norte","Árboles",CONCAT(@linkAnimal,"1",@png)),
+    ("Cigarra marrón","Bicho","Una cigarra marrón que emite un sonido muy fuerte.","Floridablanca Norte","Árboles",CONCAT(@linkAnimal,"2",@png));
 INSERT INTO objeto (nombre, descripcion, efecto, imagen) VALUES
     ("Exporbe mini", "Una pizca de este pequeño orbe vale tres horas de entrenamiento.","En amigo. Gana 10 pts. de EXP.",CONCAT(@linkObjeto, "19", @png)),
     ("Exporbe S", "Tres días de entrenamiento con solo tocar este exporbe.", "En amigo. Gana 50 pts. de EXP.", CONCAT(@linkObjeto,"60",@png)),
@@ -341,7 +368,12 @@ INSERT INTO objeto (nombre, descripcion, efecto, imagen) VALUES
     ("Técnicas a tope","Mejora tus técnicas con la ayuda de este libro didáctico.","En amigo. Nivel +1 a una técnica.",CONCAT(@linkObjeto,"69",@png));
 
 INSERT INTO equipamiento (nombre, descripcion, efecto, imagen) VALUES
-    ("Pulsera de fuego","Quien la lleva puede aplastar manzanas con sus propias manos","Fuerza +18 Defensa -8",CONCAT(@linkEquipamiento, "38", @png));
+    ("Pulsera gastada","Es algo barata, pero ¡para algunos Yo-kai es más que suficiente!","Fuerza +10 Velocidad -5",CONCAT(@linkEquipamiento,"1",@png)),
+    ("Pulsera barata","No tiene mucho estilo, pero por lo menos hace el apaño.","Fuerza +10 Defensa -5",CONCAT(@linkEquipamiento,"37",@png)),
+    ("Pulsera punki","Complemento con púas para amantes del rock. ¡No te pinches!","Fuerza +18 Velocidad -8",CONCAT(@linkEquipamiento,"2",@png)),
+    ("Pulsera de fuego","Quien la lleva puede aplastar manzanas con sus propias manos","Fuerza +18 Defensa -8",CONCAT(@linkEquipamiento,"38",@png)),
+    ("Pulsera de pinchos","¿Eres de los de más vale fuerza que maña? Esto es para ti.","Fuerza +25 Velocidad -12",CONCAT(@linkEquipamiento,"3",@png)),
+    ("Pulsera excelente","Un objeto muy elegante. Aumenta la fuerza y ayuda a levantar peso.","Fuerza +25 Defensa -12",CONCAT(@linkEquipamiento,"39",@png));
 INSERT INTO inventario (nombre, bolsillo, id_interior)
     SELECT nombre, 'Comida', id FROM comida
     UNION
@@ -352,18 +384,6 @@ INSERT INTO yokai (nombre,medalla,tribu,rango,bio,habilidad,ataque,tecnica,anima
     ("Alcaldero",CONCAT(@linkMedalla, "1", @png),"Valiente","E","Un Yo-kai descuidado que solo lleva un taparrabos y una sartén en la cabeza. No intentes imitarlo.","Despreocupación","Pelmapunzadas","Ascuas","Palillo Puntiagudo","A la Ligera","Arroz","Pan","Luchador","Arroz con ciruelas",45,"Exporbe S",17,0.07,28,1,0.7,1,1,1,1.3,1),
     ("Sinná",CONCAT(@linkMedalla,"2",@png),"Valiente","C","Al quitarse la sartén, Sinná está desprotegido ante el mundo. Pero no le verás ni un moratón en el cuerpo ni expresar dolor.","Despreocupación","Multipuñalada","Ascuas","Lluvia de Palillos","Sin Defensa","Arroz","Pan","Luchador","Arroz en hoja de col",55,"Pulsera de fuego",16,0.16,32,1,0.5,1,1,1,1.5,1),
     ("Sinnareno",CONCAT(@linkMedalla,"3",@png),"Valiente","B","Un Yo-kai que siempre está dispuesto a combatir. Sin ropa que lo ralentice, siempre llega temprano y se pone moreno.","Despreocupación","Multipuñalada","Guijarro","Corte Profundo","Atrevimiento","Arroz","Pan","Luchador","Arroz con huevas",50,"Golpes secretos",5,0.21,38,2,1,1,0.5,0.5,1,1.8);
-INSERT INTO localizacion (nombre, zona) VALUES
-    ("Calle inhóspita", "Floridablanca Norte"),
-    ("Floridablanca Norte", "Floridablanca Norte"),
-    ("Maldiexprés", "Gerageralandia"),
-    ("Superhíper Norte", "Floridablanca Norte"),
-    ("Túnel Infinito", "Vellón"),
-    ("Camino misterioso", "San Fantástico"),
-    ("La pasarela", "Floridablanca Norte"),
-    ("Colegio de Floridablanca", "Floridablanca Norte"),
-    ("Portales místicos", "Portales místicos"),
-    ("Evolución", "Evolución"),
-    ("Infierno Infinito", "Infierno Infinito");
 INSERT INTO yokai_localizacion (yokai, localizacion, anotaciones) VALUES
     (1, "La pasarela", NULL),
     (1, "Floridablanca Norte", "Hierba"),
