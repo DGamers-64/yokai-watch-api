@@ -67,13 +67,17 @@ export class InventarioModel {
                 if (dropsComida.length > 0) {
                     dropsComida.forEach(i => {
                         if (comida.nombre == i.drop_comun) {
-                            delete i.drop_raro
-                            delete i.prob_raro
-                            delete i.drop_comun
-                        } else {
+                            i.prob = i.prob_comun
                             delete i.drop_comun
                             delete i.prob_comun
                             delete i.drop_raro
+                            delete i.prob_raro
+                        } else {
+                            i.prob = i.prob_raro
+                            delete i.drop_comun
+                            delete i.prob_comun
+                            delete i.drop_raro
+                            delete i.prob_raro
                         }
                     });
                 }
@@ -105,13 +109,17 @@ export class InventarioModel {
                 if (dropsObjetos.length > 0) {
                     dropsObjetos.forEach(i => {
                         if (objetos.nombre == i.drop_comun) {
-                            delete i.drop_raro
-                            delete i.prob_raro
-                            delete i.drop_comun
-                        } else {
+                            i.prob = i.prob_comun
                             delete i.drop_comun
                             delete i.prob_comun
                             delete i.drop_raro
+                            delete i.prob_raro
+                        } else {
+                            i.prob = i.prob_raro
+                            delete i.drop_comun
+                            delete i.prob_comun
+                            delete i.drop_raro
+                            delete i.prob_raro
                         }
                     });
                 }
@@ -143,13 +151,17 @@ export class InventarioModel {
                 if (dropsEquipamiento.length > 0) {
                     dropsEquipamiento.forEach(i => {
                         if (equipamiento.nombre == i.drop_comun) {
-                            delete i.drop_raro
-                            delete i.prob_raro
-                            delete i.drop_comun
-                        } else {
+                            i.prob = i.prob_comun
                             delete i.drop_comun
                             delete i.prob_comun
                             delete i.drop_raro
+                            delete i.prob_raro
+                        } else {
+                            i.prob = i.prob_raro
+                            delete i.drop_comun
+                            delete i.prob_comun
+                            delete i.drop_raro
+                            delete i.prob_raro
                         }
                     });
                 }
@@ -188,13 +200,17 @@ export class InventarioModel {
                 if (dropsComida.length > 0) {
                     dropsComida.forEach(i => {
                         if (comida.nombre == i.drop_comun) {
-                            delete i.drop_raro
-                            delete i.prob_raro
-                            delete i.drop_comun
-                        } else {
+                            i.prob = i.prob_comun
                             delete i.drop_comun
                             delete i.prob_comun
                             delete i.drop_raro
+                            delete i.prob_raro
+                        } else {
+                            i.prob = i.prob_raro
+                            delete i.drop_comun
+                            delete i.prob_comun
+                            delete i.drop_raro
+                            delete i.prob_raro
                         }
                     });
                 }
@@ -226,13 +242,17 @@ export class InventarioModel {
                 if (dropsObjetos.length > 0) {
                     dropsObjetos.forEach(i => {
                         if (objetos.nombre == i.drop_comun) {
-                            delete i.drop_raro
-                            delete i.prob_raro
-                            delete i.drop_comun
-                        } else {
+                            i.prob = i.prob_comun
                             delete i.drop_comun
                             delete i.prob_comun
                             delete i.drop_raro
+                            delete i.prob_raro
+                        } else {
+                            i.prob = i.prob_raro
+                            delete i.drop_comun
+                            delete i.prob_comun
+                            delete i.drop_raro
+                            delete i.prob_raro
                         }
                     });
                 }
@@ -264,13 +284,17 @@ export class InventarioModel {
                 if (dropsEquipamiento.length > 0) {
                     dropsEquipamiento.forEach(i => {
                         if (equipamiento.nombre == i.drop_comun) {
-                            delete i.drop_raro
-                            delete i.prob_raro
-                            delete i.drop_comun
-                        } else {
+                            i.prob = i.prob_comun
                             delete i.drop_comun
                             delete i.prob_comun
                             delete i.drop_raro
+                            delete i.prob_raro
+                        } else {
+                            i.prob = i.prob_raro
+                            delete i.drop_comun
+                            delete i.prob_comun
+                            delete i.drop_raro
+                            delete i.prob_raro
                         }
                     });
                 }

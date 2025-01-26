@@ -15,14 +15,29 @@ p {
     margin-top: 0.5rem;
 }
 
+.botonBuscar {
+    border: 1px solid black;
+    background: linear-gradient(to right, aquamarine, lightgoldenrodyellow);
+    padding: 0.2rem;
+}
+
+.botonBuscar:hover {
+    background: linear-gradient(to right, aqua, yellow);
+}
+
+.inputBuscar {
+    padding: 0.2rem;
+}
+
 #botonEstadisticas {
     border: 1px solid black;
-    background-color: aquamarine;
-    font-size: 15px;
+    background: linear-gradient(to right, aquamarine, lightgoldenrodyellow);
+    font-size: 20px;
+    padding: 0.2rem 1rem;
 }
 
 #botonEstadisticas:hover {
-    background-color: aqua;
+    background: linear-gradient(to right, aqua, yellow);
 }
 
 #estadisticas {
@@ -35,6 +50,7 @@ p {
     margin-top: 1rem;
     border: 2px solid black;
     background-color: white;
+    height: 8rem;
 }
 
 .imagenInfo {
