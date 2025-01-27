@@ -16,12 +16,38 @@ p {
     margin-top: 0.5rem;
 }
 
+button {
+    cursor: pointer;
+}
+
+.section-juegos section {
+    display: none;
+}
+
+#ykw1 {
+    border: 2px solid blue;
+    background-color: lightblue;
+}
+
 #ykw2 {
     border: 2px solid purple;
     background-color: lightpink;
 }
 
+#ykw3 {
+    border: 2px solid orangered;
+    background-color: orange;
+}
+
+#ykwb {
+    border: 2px solid green;
+    background-color: lightgreen;
+}
+
 .desaparecer {
+    background-color: rgba(255, 255, 255, 0);
+    border: 0;
+    font-size: 30px;
     float: right;
 }
 
