@@ -26,7 +26,7 @@ function comprobarComida() {
                 const insertadosElemento = document.getElementById("comidaInsertados");
                 insertadosElemento.innerHTML = contador;
                 const porcentajeElemento = document.getElementById("comidaPorcentaje");
-                const porcentaje = (contador / 71) * 100
+                const porcentaje = (contador / 74) * 100
                 porcentajeElemento.innerHTML = porcentaje.toFixed(2)
                 resolve(contador);
             })
@@ -58,7 +58,7 @@ function comprobarEquipamiento() {
                 const insertadosElemento = document.getElementById("equipamientoInsertados");
                 insertadosElemento.innerHTML = contador;
                 const porcentajeElemento = document.getElementById("equipamientoPorcentaje");
-                const porcentaje = (contador / 63) * 100
+                const porcentaje = (contador / 67) * 100
                 porcentajeElemento.innerHTML = porcentaje.toFixed(2)
                 resolve(contador);
             })

@@ -109,3 +109,29 @@ async function buscarEquipamiento() {
             tablaInfo.appendChild(descripcion)
         })
 }
+
+async function buscarEndpoint() {
+    const texto = document.getElementById("buscador-global-endpoints").value
+    const jsonSalida = document.getElementById("json-salida")
+    fetch(`http://localhost:3000/${texto}`)
+        .then(res => res.json())
+        .then(data => {
+            jsonSalida.innerHTML = `<pre class="codigo-json">${JSON.stringify(data, null, 2)}</pre>`
+            jsonSalida.style.display = 'block'
+        })
+}
+
+async function buscarPorParametro(link, button) {
+    fetch(`http://localhost:3000${link}`)
+        .then(res => res.json())
+        .then(data => {
+            const parentDiv = button.parentElement;
+            let resultDiv = parentDiv.querySelector('.div-resultado-endpoint');
+            if (!resultDiv) {
+                resultDiv = document.createElement('div');
+                resultDiv.className = 'div-resultado-endpoint'
+                parentDiv.appendChild(resultDiv);
+            }
+            resultDiv.innerHTML = `<pre class='codigo-json'>${JSON.stringify(data, null, 2)}</pre>`;
+        })
+}

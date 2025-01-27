@@ -4,13 +4,17 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yokai API</title>
+    <title>YokAPI</title>
     <script src="estadisticas.js"></script>
     <script src="busqueda.js"></script>
 </head>
 <body>
     <section>
-        <p id="yokapi">YokAPI is live!</p>
+        <p class="titulos">¡YokAPI está funcionando!</p>
+        <p>Bienvenidos a la YokAPI, una API para consultar en cualquier momento cualquier dato relacionado a la saga Yo-Kai Watch en temas más técnicos, como el medallium, drops de Yo-Kais, localizaciones entre muchos otros, ¡disfruta!</p>
+    </section>
+    <section>
+        <p class="titulos">Búsqueda express</p>
         <div class="flexbox">
             <article>
                 <input type="text" id="busquedaYokai" placeholder="Escribe un Yo-Kai..." tabindex="1" class="inputBuscar"> <button onclick="buscarYokai()" id="botonBuscarYokai" class="botonBuscar">Buscar</button>
@@ -31,6 +35,7 @@
         </div>
     </section>
     <section>
+        <p class="titulos">Estadísticas</p>
         <button onclick="estadisticas()" id="botonEstadisticas">Obtener estadísticas</button><br>
         <div id="estadisticas">
             <p><b>Yokais insertados en la API</b>: <span id="ykInsertados"></span>/448 | <span id="ykPorcentaje"></span>%</p>
@@ -38,6 +43,53 @@
             <p><b>Objetos insertados en la API</b>: <span id="objetosInsertados"></span>/127 | <span id="objetosPorcentaje"></span>%</p>
             <p><b>Equipamiento insertado en la API</b>: <span id="equipamientoInsertados"></span>/67 | <span id="equipamientoPorcentaje"></span>%</p>
             <p id="porcentajeTotalParrafo"><b>Total</b>: <span id="porcentajeTotal"></span>%</p>
+        </div>
+    </section>
+    <section>
+        <p class="titulos">Buscador</p>
+        <span id="buscador-global-link">http://localhost:3000/</span><input type="text" id="buscador-global-endpoints" placeholder="ykw2/yokai/"> <button class="botonBuscar" onclick="buscarEndpoint()">Ejecutar</button>
+        <article id="json-salida"></article>
+    </section>
+    <section>
+        <p class="titulos">Endpoints</p>
+        <p>Esta API cuenta con diversos endpoints, los veremos a continuación:</p>
+        <div class="endpoints">
+            <div class="endpoint-linea">
+                <span class="get-endpoint">GET</span>
+                <span class="comando-endpoint">/ykw2/</span>
+                <span class="desc-endpoint">Devuelve información sobre los endpoints posibles con YW2</span>
+                <button class="botonBuscar" onclick="buscarPorParametro('/ykw2/', this)">Ejecutar</button>
+            </div>
+            <div class="endpoint-linea">
+                <span class="get-endpoint">GET</span>
+                <span class="comando-endpoint">/ykw2/yokai/</span>
+                <span class="desc-endpoint">Devuelve una lista de todos los Yo-Kai registrados en YW2</span>
+                <button class="botonBuscar" onclick="buscarPorParametro('/ykw2/yokai/', this)">Ejecutar</button>
+            </div>
+            <div class="endpoint-linea">
+                <span class="get-endpoint">GET</span>
+                <span class="comando-endpoint">/ykw2/inventario/</span>
+                <span class="desc-endpoint">Devuelve una lista de los bolsillos del inventario navegables en YW2</span>
+                <button class="botonBuscar" onclick="buscarPorParametro('/ykw2/inventario', this)">Ejecutar</button>
+            </div>
+            <div class="endpoint-linea">
+                <span class="get-endpoint">GET</span>
+                <span class="comando-endpoint">/ykw2/inventario/comida/</span>
+                <span class="desc-endpoint">Devuelve la lista de comidas que hay en YW2</span>
+                <button class="botonBuscar" onclick="buscarPorParametro('/ykw2/inventario/comida/', this)">Ejecutar</button>
+            </div>
+            <div class="endpoint-linea">
+                <span class="get-endpoint">GET</span>
+                <span class="comando-endpoint">/ykw2/inventario/objeto/</span>
+                <span class="desc-endpoint">Devuelve la lista de objetos que hay en YW2</span>
+                <button class="botonBuscar" onclick="buscarPorParametro('/ykw2/inventario/objeto/', this)">Ejecutar</button>
+            </div>
+            <div class="endpoint-linea">
+                <span class="get-endpoint">GET</span>
+                <span class="comando-endpoint">/ykw2/inventario/equipamiento/</span>
+                <span class="desc-endpoint">Devuelve la lista de equipamiento que hay en YW2</span>
+                <button class="botonBuscar" onclick="buscarPorParametro('/ykw2/inventario/equipamiento/', this)">Ejecutar</button>
+            </div>
         </div>
     </section>
 </body>
