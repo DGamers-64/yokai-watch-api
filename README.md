@@ -30,4 +30,4 @@ Para ejecutar la API puedes usar:
 Tendrás que ejecutar en tu servidor los scripts que vienen en `./databases/`. Con ejecutarlos y establecer las variables de entorno correspondientes debería de ser suficiente para que tu proyecto funcione.
 
 # Endpoints
-Para conocer más sobre los distintos endpoints que tiene el proyecto comprueba [`endpoints.md`](https://github.com/DGamers-64/yokai-watch-api/endpoints.md) o la página de inicio.
+Para conocer más sobre los distintos endpoints que tiene el proyecto comprueba [`endpoints.md`](https://github.com/DGamers-64/yokai-watch-api/blob/master/endpoints.md) o la página de inicio.
