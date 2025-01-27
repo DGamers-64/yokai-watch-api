@@ -16,6 +16,15 @@ p {
     margin-top: 0.5rem;
 }
 
+#ykw2 {
+    border: 2px solid purple;
+    background-color: lightpink;
+}
+
+.desaparecer {
+    float: right;
+}
+
 .botonBuscar {
     border: 1px solid black;
     background: linear-gradient(to right, aquamarine, lightgoldenrodyellow);
