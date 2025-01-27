@@ -1,7 +1,9 @@
+const dominio = window.location.host
+
 async function buscarYokai() {
     const buscar = document.getElementById("busquedaYokai").value
     const tablaInfo = document.getElementById("infoYokai")
-    await fetch(`http://localhost:3000/ykw2/yokai/${buscar}`)
+    await fetch(`http://${dominio}/ykw2/yokai/${buscar}`)
         .then(res => res.json())
         .then(data => {
             yokai = data[0]
@@ -29,7 +31,7 @@ async function buscarYokai() {
 async function buscarObjeto() {
     const buscar = document.getElementById("busquedaObjeto").value
     const tablaInfo = document.getElementById("infoObjeto")
-    await fetch(`http://localhost:3000/ykw2/inventario/objeto/${buscar}`)
+    await fetch(`http://${dominio}/ykw2/inventario/objeto/${buscar}`)
         .then(res => res.json())
         .then(data => {
             objeto = data[0]
@@ -57,7 +59,7 @@ async function buscarObjeto() {
 async function buscarComida() {
     const buscar = document.getElementById("busquedaComida").value
     const tablaInfo = document.getElementById("infoComida")
-    await fetch(`http://localhost:3000/ykw2/inventario/comida/${buscar}`)
+    await fetch(`http://${dominio}/ykw2/inventario/comida/${buscar}`)
         .then(res => res.json())
         .then(data => {
             comida = data[0]
@@ -85,7 +87,7 @@ async function buscarComida() {
 async function buscarEquipamiento() {
     const buscar = document.getElementById("busquedaEquipamiento").value
     const tablaInfo = document.getElementById("infoEquipamiento")
-    await fetch(`http://localhost:3000/ykw2/inventario/equipamiento/${buscar}`)
+    await fetch(`http://${dominio}/ykw2/inventario/equipamiento/${buscar}`)
         .then(res => res.json())
         .then(data => {
             equipamiento = data[0]
@@ -113,7 +115,7 @@ async function buscarEquipamiento() {
 async function buscarEndpoint() {
     const texto = document.getElementById("buscador-global-endpoints").value
     const jsonSalida = document.getElementById("json-salida")
-    fetch(`http://localhost:3000/ykw2/${texto}`)
+    fetch(`http://${dominio}/ykw2/${texto}`)
         .then(res => res.json())
         .then(data => {
             jsonSalida.innerHTML = `<pre class="codigo-json">${JSON.stringify(data, null, 2)}</pre>`
@@ -122,7 +124,7 @@ async function buscarEndpoint() {
 }
 
 async function buscarPorParametro(link, button) {
-    fetch(`http://localhost:3000${link}`)
+    fetch(`http://${dominio}${link}`)
         .then(res => res.json())
         .then(data => {
             const parentDiv = button.parentElement;

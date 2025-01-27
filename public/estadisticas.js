@@ -1,6 +1,6 @@
 function comprobarYokais() {
     return new Promise((resolve, reject) => {
-        fetch('http://localhost:3000/ykw2/yokai/')
+        fetch(`http://${dominio}/ykw2/yokai/`)
             .then(res => res.json())
             .then(data => {
                 contador = data.length
@@ -19,7 +19,7 @@ function comprobarYokais() {
 
 function comprobarComida() {
     return new Promise((resolve, reject) => {
-        fetch('http://localhost:3000/ykw2/inventario/')
+        fetch(`http://${dominio}/ykw2/inventario/`)
             .then(res => res.json())
             .then(data => {
                 contador = data[0].longitud
@@ -35,7 +35,7 @@ function comprobarComida() {
 }
 function comprobarObjetos() {
     return new Promise((resolve, reject) => {
-        fetch('http://localhost:3000/ykw2/inventario/')
+        fetch(`http://${dominio}/ykw2/inventario/`)
             .then(res => res.json())
             .then(data => {
                 contador = data[1].longitud
@@ -51,7 +51,7 @@ function comprobarObjetos() {
 }
 function comprobarEquipamiento() {
     return new Promise((resolve, reject) => {
-        fetch('http://localhost:3000/ykw2/inventario/')
+        fetch(`http://${dominio}/ykw2/inventario/`)
             .then(res => res.json())
             .then(data => {
                 contador = data[2].longitud
