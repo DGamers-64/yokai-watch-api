@@ -1,5 +1,5 @@
 function desaparecer(boton) {
-    document.getElementById("buscador-global-link-ykw2").innerHTML = `http://${dominio}/ykw2`
+    document.getElementById("buscador-global-link-ykw2").innerHTML = `http://${dominio}/ykw2/`
     const sectionPadre = boton.parentElement
     const hijos = sectionPadre.children
     Array.from(hijos).forEach(hijo => {
