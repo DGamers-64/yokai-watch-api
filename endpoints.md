@@ -6,7 +6,7 @@
 - `/ykw2/inventario/objeto/`: Devuelve la lista de objetos que hay en YW2.
 - `/ykw2/inventario/equipamiento/`: Devuelve la lista de equipamiento que hay en YW2.
 
-# URL Querys
+# URL Param
 - `?lang=[(es),en]`: Cambia el idioma de los datos recibidos. (TODO)
 - `?format=[(json),xml,html]`: Cambia el formato en que se reciben los datos. (TODO)
 - `?offset=[(1),int]`: Cuando se devuelve una lista indica desde que indice (empezando por 1) se devolverá. Se puede combinar sin problema con `?limit`.
