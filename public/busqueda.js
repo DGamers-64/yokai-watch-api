@@ -7,24 +7,17 @@ async function buscarYokai() {
         .then(res => res.json())
         .then(data => {
             yokai = data[0]
-            const titulo = document.createElement("p")
-            const imagen = document.createElement("img")
-            const descripcion = document.createElement("span")
-
-            titulo.className = "tituloInfo"
-            imagen.className = "imagenInfo"
-            descripcion.className = "descripcionInfo"
-
-            titulo.innerHTML = yokai.infoGeneral.nombre
-            imagen.src = yokai.infoGeneral.medalla
-            descripcion.innerHTML = yokai.infoGeneral.bio
-
-            tablaInfo.innerHTML = ""
-            tablaInfo.style.display = "block"
             
-            tablaInfo.appendChild(titulo)
-            tablaInfo.appendChild(imagen)
-            tablaInfo.appendChild(descripcion)
+            titulo = yokai.infoGeneral.nombre
+            imagen = yokai.infoGeneral.medalla
+            descripcion = yokai.infoGeneral.bio
+            
+            tablaInfo.innerHTML = `
+            <p class="tituloInfo">${titulo}</p>
+            <img src="${imagen}" class="imagenInfo">
+            <span class="descripcionInfo">${descripcion}</span>
+            `
+            tablaInfo.style.display = "block"
         })
 }
 
@@ -35,24 +28,17 @@ async function buscarObjeto() {
         .then(res => res.json())
         .then(data => {
             objeto = data[0]
-            const titulo = document.createElement("p")
-            const imagen = document.createElement("img")
-            const descripcion = document.createElement("span")
 
-            titulo.className = "tituloInfo"
-            imagen.className = "imagenInfo"
-            descripcion.className = "descripcionInfo"
+            titulo = objeto.nombre
+            imagen = objeto.imagen
+            descripcion = objeto.descripcion
 
-            titulo.innerHTML = objeto.nombre
-            imagen.src = objeto.imagen
-            descripcion.innerHTML = objeto.descripcion
-
-            tablaInfo.innerHTML = ""
+            tablaInfo.innerHTML = `
+            <p class="tituloInfo">${titulo}</p>
+            <img src="${imagen}" class="imagenInfo">
+            <span class="descripcionInfo">${descripcion}</span>
+            `
             tablaInfo.style.display = "block"
-            
-            tablaInfo.appendChild(titulo)
-            tablaInfo.appendChild(imagen)
-            tablaInfo.appendChild(descripcion)
         })
 }
 
@@ -63,24 +49,17 @@ async function buscarComida() {
         .then(res => res.json())
         .then(data => {
             comida = data[0]
-            const titulo = document.createElement("p")
-            const imagen = document.createElement("img")
-            const descripcion = document.createElement("span")
 
-            titulo.className = "tituloInfo"
-            imagen.className = "imagenInfo"
-            descripcion.className = "descripcionInfo"
+            titulo = comida.nombre
+            imagen = comida.imagen
+            descripcion = comida.descripcion
 
-            titulo.innerHTML = comida.nombre
-            imagen.src = comida.imagen
-            descripcion.innerHTML = comida.descripcion
-
-            tablaInfo.innerHTML = ""
+            tablaInfo.innerHTML = `
+            <p class="tituloInfo">${titulo}</p>
+            <img src="${imagen}" class="imagenInfo">
+            <span class="descripcionInfo">${descripcion}</span>
+            `
             tablaInfo.style.display = "block"
-            
-            tablaInfo.appendChild(titulo)
-            tablaInfo.appendChild(imagen)
-            tablaInfo.appendChild(descripcion)
         })
 }
 
@@ -91,24 +70,17 @@ async function buscarEquipamiento() {
         .then(res => res.json())
         .then(data => {
             equipamiento = data[0]
-            const titulo = document.createElement("p")
-            const imagen = document.createElement("img")
-            const descripcion = document.createElement("span")
 
-            titulo.className = "tituloInfo"
-            imagen.className = "imagenInfo"
-            descripcion.className = "descripcionInfo"
+            titulo = equipamiento.nombre
+            imagen = equipamiento.imagen
+            descripcion = equipamiento.descripcion
 
-            titulo.innerHTML = equipamiento.nombre
-            imagen.src = equipamiento.imagen
-            descripcion.innerHTML = equipamiento.descripcion
-
-            tablaInfo.innerHTML = ""
+            tablaInfo.innerHTML = `
+            <p class="tituloInfo">${titulo}</p>
+            <img src="${imagen}" class="imagenInfo">
+            <span class="descripcionInfo">${descripcion}</span>
+            `
             tablaInfo.style.display = "block"
-            
-            tablaInfo.appendChild(titulo)
-            tablaInfo.appendChild(imagen)
-            tablaInfo.appendChild(descripcion)
         })
 }
 
