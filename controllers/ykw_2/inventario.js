@@ -2,30 +2,38 @@ const { InventarioModel } = await import(`../../models/ykw_2/inventario.js`)
 
 export class InventarioController {
     static async getBolsillos(req, res) {
+        let { lang, format, offset, limit } = req.query
+        if (offset) {
+            offset--
+        }
 
-        const allBolsillos = await InventarioModel.getAllBolsillos()
+        const allBolsillos = await InventarioModel.getAllBolsillos(lang, format, offset, limit)
 
         res.send(allBolsillos)
     }
 
     static async getItemsInBolsillo(req, res) {
+        let { lang, format, offset, limit } = req.query
+        if (offset) {
+            offset--
+        }
+        
         const { bolsillo } = req.params
 
-        const listaObjetos = await InventarioModel.getItemsInBolsillo({ bolsillo })
+        const listaObjetos = await InventarioModel.getItemsInBolsillo({ bolsillo, lang, format, offset, limit })
 
         res.send(listaObjetos)
     }
 
     static async getItemsInfoByParam(req, res) {
+        let { lang, format, offset, limit } = req.query
+        if (offset) {
+            offset--
+        }
+
         const { bolsillo, id } = req.params
 
-        let objeto 
-        
-        if (!isNaN(id)) {
-            objeto = await InventarioModel.getItemsInfoById({ bolsillo, id })
-        } else {
-            objeto = await InventarioModel.getItemsInfoByName({ bolsillo, nombre: id })
-        }
+        const objeto = await InventarioModel.getItemsInfo({ bolsillo, id, lang, format, offset, limit })
 
         res.send(objeto)
     }
