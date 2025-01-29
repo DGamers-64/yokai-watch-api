@@ -20,7 +20,9 @@ export class InventarioController {
         
         const { bolsillo } = req.params
 
-        const listaObjetos = await InventarioModel.getItemsInBolsillo({ bolsillo, lang, format, offset, limit })
+        const filtros = req.filtros
+
+        const listaObjetos = await InventarioModel.getItemsInBolsillo({ bolsillo, lang, format, offset, limit, filtros })
 
         res.send(listaObjetos)
     }

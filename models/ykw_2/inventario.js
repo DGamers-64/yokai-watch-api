@@ -2,14 +2,8 @@ import { connection } from "./config.js"
 
 export class InventarioModel {
     static async getAllBolsillos(lang="es", format="json", offset=0, limit=100) {
-
-        if (!isNaN(offset)) {
-            offset = parseInt(offset)
-        }
-
-        if (!isNaN(limit)) {
-            limit = parseInt(limit)
-        }
+        if (!isNaN(offset)) offset = parseInt(offset)
+        if (!isNaN(limit)) limit = parseInt(limit)
 
         const [bolsillos] = await connection.query(
             'SELECT bolsillo, COUNT(bolsillo) AS "longitud" FROM inventario GROUP BY bolsillo'
@@ -20,56 +14,22 @@ export class InventarioModel {
         return bolsillos
     }
 
-    static async getItemsInBolsillo({ bolsillo, lang="es", format="json", offset=0, limit=100 }) {
+    static async getItemsInBolsillo({ bolsillo, lang = "es", format = "json", offset = 0, limit = 100, filtros }) {
+        if (!isNaN(offset)) offset = parseInt(offset)
+        if (!isNaN(limit)) limit = parseInt(limit)
+    
+        const [items] = await connection.query(
+            `SELECT id, nombre FROM ?? WHERE ${filtros.consulta} LIMIT ? OFFSET ?`,
+            [ bolsillo, ...filtros.valores, limit, offset ]
+        )
 
-        if (!isNaN(offset)) {
-            offset = parseInt(offset)
-        }
-
-        if (!isNaN(limit)) {
-            limit = parseInt(limit)
-        }
-
-        switch (bolsillo) {
-            case "comida":
-                const [comida] = await connection.query(
-                    'SELECT id, nombre, tipo FROM comida LIMIT ? OFFSET ?',
-                    [ limit, offset]
-                )
-                if (comida.length === 0) return []
-                return comida
-
-            case "objeto":
-                const [objetos] = await connection.query(
-                    'SELECT id, nombre FROM objeto LIMIT ? OFFSET ?',
-                    [ limit, offset]
-                )
-                if (objetos.length === 0) return []
-                return objetos
-
-            case "equipamiento":
-                const [equipamiento] = await connection.query(
-                    'SELECT id, nombre FROM equipamiento LIMIT ? OFFSET ?',
-                    [ limit, offset]
-                )
-                if (equipamiento.length === 0) return []
-                return equipamiento
-        
-            default:
-                const vacio = {}
-                return vacio
-        }
+        if (items.length === 0) return []
+        return items
     }
 
     static async getItemsInfo({ bolsillo, id, lang="es", format="json", offset=0, limit=100 }) {
-
-        if (!isNaN(offset)) {
-            offset = parseInt(offset)
-        }
-
-        if (!isNaN(limit)) {
-            limit = parseInt(limit)
-        }
+        if (!isNaN(offset)) offset = parseInt(offset)
+        if (!isNaN(limit)) limit = parseInt(limit)
 
         switch (bolsillo) {
             case "comida":
