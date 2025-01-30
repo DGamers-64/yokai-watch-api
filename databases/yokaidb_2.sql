@@ -360,12 +360,21 @@ INSERT INTO objeto (nombre, descripcion, efecto, imagen) VALUES
     ("Exporbe L", "Otorga la experiencia de tres vidas con solo tocarlo.", "En amigo. Gana 2000 pts. de EXP.", CONCAT(@linkObjeto,"62",@png)),
     ("Exporbe XL", "Contiene la sabiudría de algunas de las mentes más brillantes.","En amigo. Gana 8000 pts. de EXP.", CONCAT(@linkObjeto,"63",@png)),
     ("Exporbe sagrado", "Una lagartija diminuta tocó este orbe y ahora es un dinosaurio","En amigo. Gana 20.000 pts. de EXP.", CONCAT(@linkObjeto,"64",@png)),
-    ("Date vida","Un libro de motivación para todos los Yo-kai. Sobre todo los vagos.","En amigo. El Yo-kai vaguea menos.",CONCAT(@linkObjeto,"71",@png)),
-    ("Golpes secretos","Un libro de secretos de combate. ¡Serás un profesional del ataque!","En amigo. Nivel +1 a un ataque.",CONCAT(@linkObjeto,"68",@png)),
     ("Resistina", "Esta bebida permite que los humanos corran sin cansarse.","En amigo. Corre sin cansarte durante un tiempo.",CONCAT(@linkObjeto, "58", @png)),
     ("Resistina Alfa", "El efecto de la Resistina Alfa dura más que el de la normal.","En amigo. Corre sin cansarte durante un tiempo.",CONCAT(@linkObjeto, "59", @png)),
+    ("Golpes secretos","Un libro de secretos de combate. ¡Serás un profesional del ataque!","En amigo. Nivel +1 a un ataque.",CONCAT(@linkObjeto,"68",@png)),
     ("Secretos del alma","Un libro sobre los secretos del animáximum.","En amigo. Nivel +1 a un animáximum.",CONCAT(@linkObjeto,"70",@png)),
-    ("Técnicas a tope","Mejora tus técnicas con la ayuda de este libro didáctico.","En amigo. Nivel +1 a una técnica.",CONCAT(@linkObjeto,"69",@png));
+    ("Técnicas a tope","Mejora tus técnicas con la ayuda de este libro didáctico.","En amigo. Nivel +1 a una técnica.",CONCAT(@linkObjeto,"69",@png)),
+    ("Date vida","Un libro de motivación para todos los Yo-kai. Sobre todo los vagos.","En amigo. El Yo-kai vaguea menos.",CONCAT(@linkObjeto,"71",@png)),
+    ("Kárate va","Un libro sobre el arte del kárate. Cambia el carácer de un Yo-kai.","En amigo. Hace al Yo-kai gruñón.",CONCAT(@linkObjeto,"72",@png)),
+    ("Kárate doy","Un libro sobre kárate avanzado que se centra en el ataque.","En amigo. Hace al Yo-kai duro.",CONCAT(@linkObjeto,"73",@png)),
+    ("Tecnicedario","Una recopilación ilustrada de las habilidades. ¡Fascinante!","En amigo. Hace añ Yo-kai sensato.",CONCAT(@linkObjeto,"74",@png)),
+    ("Tecnipedia","El libro que contiene todas y cada una de las habilidades Yo-kai.","En amigo. Hace al Yo-kai listo.",CONCAT(@linkObjeto,"75",@png)),
+    ("En guardia","Un libro sobre la importancia de la defensa con imágenes muy útiles.","En amigo. Hace al Yo-kai cuidadoso.",CONCAT(@linkObjeto,"76",@png)),
+    ("Defensa gloriosa","Este libro demuestra la grandeza de la defensa. ¿Para qué atacar?","En amigo. Hace al Yo-kai sereno.",CONCAT(@linkObjeto,"77",@png)),
+    ("Ángel sanador","Un libro sobre un ángel que cura personas. Te volverá más tierno.","En amigo. Hace al Yo-kai gentil.",CONCAT(@linkObjeto,"78",@png)),
+    ("Adiós, angelito",'El último libro de la saga "Angelito". ¡Es tan tierno!',"En amigo. Hace al Yo-kai tierno.",CONCAT(@linkObjeto,"79",@png)),
+    ("Cansino y paz","Una novela sobre dos niños de pueblo empeñados en dar la lata.","En amigo. Hace al Yo-kai retorcido.",CONCAT(@linkObjeto,"80",@png));
 
 INSERT INTO equipamiento (nombre, descripcion, efecto, imagen) VALUES
     ("Pulsera gastada","Es algo barata, pero ¡para algunos Yo-kai es más que suficiente!","Fuerza +10 Velocidad -5",CONCAT(@linkEquipamiento,"1",@png)),
