@@ -374,7 +374,19 @@ INSERT INTO objeto (nombre, descripcion, efecto, imagen) VALUES
     ("Defensa gloriosa","Este libro demuestra la grandeza de la defensa. ¿Para qué atacar?","En amigo. Hace al Yo-kai sereno.",CONCAT(@linkObjeto,"77",@png)),
     ("Ángel sanador","Un libro sobre un ángel que cura personas. Te volverá más tierno.","En amigo. Hace al Yo-kai gentil.",CONCAT(@linkObjeto,"78",@png)),
     ("Adiós, angelito",'El último libro de la saga "Angelito". ¡Es tan tierno!',"En amigo. Hace al Yo-kai tierno.",CONCAT(@linkObjeto,"79",@png)),
-    ("Cansino y paz","Una novela sobre dos niños de pueblo empeñados en dar la lata.","En amigo. Hace al Yo-kai retorcido.",CONCAT(@linkObjeto,"80",@png));
+    ("Cansino y paz","Una novela sobre dos niños de pueblo empeñados en dar la lata.","En amigo. Hace al Yo-kai retorcido.",CONCAT(@linkObjeto,"80",@png)),
+    ("Código Cansino","La épica secuela en la que los dos héroes ya son los apestados.","En amigo. Hace al Yo-kai cruel.",CONCAT(@linkObjeto,"81",@png)),
+    ("Cooperar hoy n.º 7","El número de julio de la revista para los que viven para servir.","En amigo. Hace al Yo-kai servicial.",CONCAT(@linkObjeto,"82",@png)),
+    ("Especial Cooperar","Una recopilación de los mejores artículos de todo el año.","En amigo. Hace al Yo-kai leal.",CONCAT(@linkObjeto,"83",@png)),
+    ("Talismán de fuerza","Un curioso amuleto vendido en el templo que aumenta la fuerza.","En amigo. Aumenta la FUE un tiempo.",CONCAT(@linkObjeto,"50",@png)),
+    ("Talismán de espíritu","Un curioso amuleto vendido en el templo que aumenta el espíritu.","En amigo. Aumenta el ESP un tiempo.",CONCAT(@linkObjeto,"51",@png)),
+    ("Talism. defensa","Un curioso amuleto vendido en el templo que aumenta la defensa.","En amigo. Aumenta la DEF un tiempo.",CONCAT(@linkObjeto,"52",@png)),
+    ("Talismán veloz","Un curioso amuleto vendido en el templo que aumenta la velocidad.","En amigo. Aumenta la VEL un tiempo.",CONCAT(@linkObjeto,"53",@png)),
+    ("Medi. asquerosa","Es asquerosa, pero reanimará a un Yo-kai inconsciente.","En amigo. Revive con el 25% de PV.",CONCAT(@linkObjeto,"54",@png)),
+    ("Medicina amarga","Mezcla amarga de hierbas que ayuda a los Yo-kai a recuperarse.","En amigo. Revive con el 50% de PV.",CONCAT(@linkObjeto,"55",@png)),
+    ("Medicina increíble","Mezcla de hierbas secreta que reanima a los Yo-kai al instante.","En amigo. Revive con todos los PV.",CONCAT(@linkObjeto,"56",@png)),
+    ("Muñeco de trapo","Nadie puede dejar de mirar a este extraño muñeco. ¡Te cautivará!","En amigo. Te permite huir.",CONCAT(@linkObjeto,"57",@png)),
+    ("Muñeco de hierro","Abulta lo suyo, pero puedes venderlo y ganar algo de dinero.","",CONCAT(@linkObjeto,"20",@png));
 
 INSERT INTO equipamiento (nombre, descripcion, efecto, imagen) VALUES
     ("Pulsera gastada","Es algo barata, pero ¡para algunos Yo-kai es más que suficiente!","Fuerza +10 Velocidad -5",CONCAT(@linkEquipamiento,"1",@png)),
