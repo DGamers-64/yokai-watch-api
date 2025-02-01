@@ -22,7 +22,7 @@ function comprobarComida() {
         fetch(`http://${dominio}/ykw2/inventario/`)
             .then(res => res.json())
             .then(data => {
-                contador = data[0].longitud
+                contador = data[1].longitud
                 const insertadosElemento = document.getElementById("comidaInsertados");
                 insertadosElemento.innerHTML = contador;
                 const porcentajeElemento = document.getElementById("comidaPorcentaje");
@@ -38,7 +38,7 @@ function comprobarObjetos() {
         fetch(`http://${dominio}/ykw2/inventario/`)
             .then(res => res.json())
             .then(data => {
-                contador = data[1].longitud
+                contador = data[0].longitud
                 const insertadosElemento = document.getElementById("objetosInsertados");
                 insertadosElemento.innerHTML = contador;
                 const porcentajeElemento = document.getElementById("objetosPorcentaje");
