@@ -31,7 +31,8 @@ app.use((req, res) => {
 app.use('/', client)
 
 app.listen(PORT, () => {
-    console.log('---------------------------------------')
+    console.log('--------------------------------------------')
     console.log(`Servidor encendido en el puerto ${PORT}`)
-    console.log('---------------------------------------')
+    console.log(`Cliente alojado en http://localhost:${PORT}`)
+    console.log('--------------------------------------------')
 })
