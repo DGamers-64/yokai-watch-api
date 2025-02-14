@@ -386,7 +386,19 @@ INSERT INTO objeto (nombre, descripcion, efecto, imagen) VALUES
     ("Medicina amarga","Mezcla amarga de hierbas que ayuda a los Yo-kai a recuperarse.","En amigo. Revive con el 50% de PV.",CONCAT(@linkObjeto,"55",@png)),
     ("Medicina increíble","Mezcla de hierbas secreta que reanima a los Yo-kai al instante.","En amigo. Revive con todos los PV.",CONCAT(@linkObjeto,"56",@png)),
     ("Muñeco de trapo","Nadie puede dejar de mirar a este extraño muñeco. ¡Te cautivará!","En amigo. Te permite huir.",CONCAT(@linkObjeto,"57",@png)),
-    ("Muñeco de hierro","Abulta lo suyo, pero puedes venderlo y ganar algo de dinero.","",CONCAT(@linkObjeto,"20",@png));
+    ("Muñeco de hierro","Abulta lo suyo, pero puedes venderlo y ganar algo de dinero.","",CONCAT(@linkObjeto,"20",@png)),
+    ("Muñeco de bronce","Muñeco de bronce. Puedes ganar un poco de dinero si lo vendes.","",CONCAT(@linkObjeto,"65",@png)),
+    ("Muñeco de plata","Muñeco de plata. Puedes ganar bastante dinero si lo vendes.","",CONCAT(@linkObjeto,"66",@png)),
+    ("Muñeco de oro","Muñeco de oro auténtico. Puedes ganar mucho dinero si lo vendes.","",CONCAT(@linkObjeto,"67",@png)),
+    -- MUÑECO DE PLATINO
+    ("Cebo para peces","Cebo hecho por Don Bacalao. Te ayudará a pescar.","",CONCAT(@linkObjeto,"111",@png)),
+    ("Sirope negro","Te ayudará a cazar insectos porque a ellos les encanta.","",CONCAT(@linkObjeto,"112",@png)),
+    ("Estrella brillante","Una estrella que brilla. Se dice que alguien las colecciona.","",CONCAT(@linkObjeto,"3",@png)),
+    ("Billete de lotería","Puedes usarlo en Caramelos Golosones. ¿Tendrás suerte?","",CONCAT(@linkObjeto,"37",@png)),
+    ("Tarjeta musical","Cambia tarjetas por canciones y ponle música a tu vida.","",CONCAT(@linkObjeto,"38",@png)),
+    ("Etiqueta de bronce","Permite acceder a niveles bronce en YO-KAI WATCH Blasters.","",CONCAT(@linkObjeto,"14",@png)),
+    ("Etiqueta de plata","Permite acceder a niveles plata en YO-KAI WATCH Blasters.","",CONCAT(@linkObjeto,"15",@png)),
+    ("Etiqueta de oro","Permite acceder a niveles oro en YO-KAI WATCH Blasters.","",CONCAT(@linkObjeto,"16",@png));
 
 INSERT INTO equipamiento (nombre, descripcion, efecto, imagen) VALUES
     ("Pulsera gastada","Es algo barata, pero ¡para algunos Yo-kai es más que suficiente!","Fuerza +10 Velocidad -5",CONCAT(@linkEquipamiento,"1",@png)),
