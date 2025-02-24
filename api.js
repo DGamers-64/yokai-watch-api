@@ -2,7 +2,7 @@ import express, { json } from 'express'
 import { ykw2Router } from './routes/ykw_2.js'
 import { client } from './client/client.js'
 import cors from 'cors'
-import { filterMiddleware, accessLog } from './middlewares/middlewares.js'
+import { MiddlewaresAPI } from './middlewares/middlewares.js'
 
 const PORT = process.env.PORT
 const app = express()
@@ -13,8 +13,8 @@ app.use(json())
 app.use(cors())
 app.use(express.static('public'))
 
-app.use(accessLog)
-app.use(filterMiddleware)
+app.use(MiddlewaresAPI.accessLog)
+app.use(MiddlewaresAPI.filterMiddleware)
 
 // app.use('/ykw1', ykw1Router)
 

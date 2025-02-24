@@ -1,3 +1,5 @@
+import os
+
 def generarYokai():
     texto = "("
     texto += '"' + input(" Nombre > ") + '",'
@@ -27,7 +29,7 @@ def generarYokai():
     texto += input(" Agua > ") + ','
     texto += input(" Viento > ")
     texto += "),\n"
-    with open('./output.txt','a',encoding='utf-8') as f:
+    with open(os.path.join(os.path.dirname(__file__), 'creador-yokai-2.txt'),'a',encoding='utf-8') as f:
         f.write(texto)
 
 respuesta = "s"
