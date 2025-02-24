@@ -399,7 +399,6 @@ INSERT INTO objeto (nombre, descripcion, efecto, imagen) VALUES
     ("Etiqueta de bronce","Permite acceder a niveles bronce en YO-KAI WATCH Blasters.","",CONCAT(@linkObjeto,"14",@png)),
     ("Etiqueta de plata","Permite acceder a niveles plata en YO-KAI WATCH Blasters.","",CONCAT(@linkObjeto,"15",@png)),
     ("Etiqueta de oro","Permite acceder a niveles oro en YO-KAI WATCH Blasters.","",CONCAT(@linkObjeto,"16",@png));
-
 INSERT INTO equipamiento (nombre, descripcion, efecto, imagen) VALUES
     ("Pulsera gastada","Es algo barata, pero ¡para algunos Yo-kai es más que suficiente!","Fuerza +10 Velocidad -5",CONCAT(@linkEquipamiento,"1",@png)),
     ("Pulsera barata","No tiene mucho estilo, pero por lo menos hace el apaño.","Fuerza +10 Defensa -5",CONCAT(@linkEquipamiento,"37",@png)),
@@ -424,8 +423,8 @@ INSERT INTO yokai (nombre,medalla,tribu,rango,bio,habilidad,ataque,tecnica,anima
     ("Katano",CONCAT(@linkMedalla,"4",@png),"Valiente","E","Un Yo-kai con forma de catana que te absorbe la inspiración. Para ser tan vago está muy afilado.","Cuerpo Afilado","Corte Doble","Torbellino","Tajo Desganado","Dejadez","Refrescos","Verduras","Luchador","Muñeco de trapo",35,"Exporbe S",17,0.20,22,1,1,1.3,1,1,1,0.7),
     ("Katananái",CONCAT(@linkMedalla,"5",@png),"Valiente","C","Demasiado vago para cortarse el pelo, pero no para atacar con sus mechones despeinados.","Cuerpo Afilado","Corte Doble","Torbellino","Ráfaga Resignada","Pereza","Refrescos","Verduras","Luchador","Exporbe S",45,"Exporbe M",20,0.20,28,1,1,1.5,1,1,1,0.5),
     ("Katakroken",CONCAT(@linkMedalla,"6",@png),"Valiente","B","Es más peligroso de lo que parece. Puede derrotar a sus oponentes con solo un tajo.","Cuerpo Afilado","Corte Doble","Granizo","Golpe Fantasma","Pereza","Refrescos","Verduras","Luchador","Anillo oxidado",50,"Date vida",5,0.31,31,1,1.3,0.7,1,1,0.7,1),
-    ("Milimpiano",CONCAT(@linkMedalla,"7",@png),"Valiente","E","Soldado de infantería a quien le encanta limpiar. Gracias a su impoluta reputación llegará a ser shogún.","Pulcritud","Pelmapunzadas","Granizo","Círculo Puro","Lavado","Dulces","Comida china","Luchador","Exporbe S",45,"Muñeco de bronce",10,0.15,32,1,1.3,0.7,1,1,1,1);
-
+    ("Milimpiano",CONCAT(@linkMedalla,"7",@png),"Valiente","E","Soldado de infantería a quien le encanta limpiar. Gracias a su impoluta reputación llegará a ser shogún.","Pulcritud","Pelmapunzadas","Granizo","Círculo Puro","Lavado","Dulces","Comida china","Luchador","Exporbe S",45,"Muñeco de bronce",10,0.15,32,1,1.3,0.7,1,1,1,1),
+    ("Samulimpio",CONCAT(@linkMedalla,"8",@png),"Valiente","B","Un shogún muy aseado y conocido por hacer rodar cabezas si algún subalterno le mancha el casco.","Pulcritud","Pulverizador","Helada","Pulverización","Aseado","Postres","Comida china","Sanador","Huevo cocido",60,"Exporbe L",5,0.18,49,1,1.7,0.5,1,1,1,1);
 INSERT INTO yokai_localizacion (yokai, localizacion, anotaciones) VALUES
     (1, "La pasarela", NULL),
     (1, "Floridablanca Norte", "Hierba"),

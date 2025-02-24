@@ -16,12 +16,12 @@ def generarYokai():
     texto += '"' + input(" Comida odiada > ") + '",'
     texto += '"' + input(" Blasters > ") + '",'
     texto += '"' + input(" Drop común > ") + '",'
-    texto += input(" Prob común > ")
+    texto += input(" Prob común > ") + ','
     texto += '"' + input(" Drop raro > ") + '",'
-    texto += input(" Prob raro > ")
-    texto += input(" Dinero > ")
-    texto += input(" Experiencia > ")
-    texto += input(" Huecos objetos > ")
+    texto += input(" Prob raro > ") + ','
+    texto += input(" Dinero > ") + ','
+    texto += input(" Experiencia > ") + ','
+    texto += input(" Huecos objetos > ") + ','
     texto += input(" Fuego > ") + ','
     texto += input(" Hielo > ") + ','
     texto += input(" Tierra > ") + ','
