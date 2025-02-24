@@ -1,7 +1,7 @@
 async function buscarEndpoint() {
     const texto = document.getElementById("buscador-global-endpoints").value
     const jsonSalida = document.getElementById("json-salida")
-    fetch(`http://${dominio}/ykw2/${texto}`)
+    fetch(`http://${dominio}/${texto}`)
         .then(res => res.json())
         .then(data => {
             jsonSalida.innerHTML = `<pre class="codigo-json">${JSON.stringify(data, null, 2)}</pre>`

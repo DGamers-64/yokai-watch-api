@@ -390,7 +390,7 @@ INSERT INTO objeto (nombre, descripcion, efecto, imagen) VALUES
     ("Muñeco de bronce","Muñeco de bronce. Puedes ganar un poco de dinero si lo vendes.","",CONCAT(@linkObjeto,"65",@png)),
     ("Muñeco de plata","Muñeco de plata. Puedes ganar bastante dinero si lo vendes.","",CONCAT(@linkObjeto,"66",@png)),
     ("Muñeco de oro","Muñeco de oro auténtico. Puedes ganar mucho dinero si lo vendes.","",CONCAT(@linkObjeto,"67",@png)),
-    -- MUÑECO DE PLATINO
+    ("Muñeco de platino","¡Este muñeco tan adorable tendrá un precio bien alto!","",CONCAT(@linkObjeto,"21",@png)),
     ("Cebo para peces","Cebo hecho por Don Bacalao. Te ayudará a pescar.","",CONCAT(@linkObjeto,"111",@png)),
     ("Sirope negro","Te ayudará a cazar insectos porque a ellos les encanta.","",CONCAT(@linkObjeto,"112",@png)),
     ("Estrella brillante","Una estrella que brilla. Se dice que alguien las colecciona.","",CONCAT(@linkObjeto,"3",@png)),
@@ -406,7 +406,11 @@ INSERT INTO equipamiento (nombre, descripcion, efecto, imagen) VALUES
     ("Pulsera punki","Complemento con púas para amantes del rock. ¡No te pinches!","Fuerza +18 Velocidad -8",CONCAT(@linkEquipamiento,"2",@png)),
     ("Pulsera de fuego","Quien la lleva puede aplastar manzanas con sus propias manos","Fuerza +18 Defensa -8",CONCAT(@linkEquipamiento,"38",@png)),
     ("Pulsera de pinchos","¿Eres de los de más vale fuerza que maña? Esto es para ti.","Fuerza +25 Velocidad -12",CONCAT(@linkEquipamiento,"3",@png)),
-    ("Pulsera excelente","Un objeto muy elegante. Aumenta la fuerza y ayuda a levantar peso.","Fuerza +25 Defensa -12",CONCAT(@linkEquipamiento,"39",@png));
+    ("Pulsera excelente","Un objeto muy elegante. Aumenta la fuerza y ayuda a levantar peso.","Fuerza +25 Defensa -12",CONCAT(@linkEquipamiento,"39",@png)),
+    ("Pulsera de sol","Cuentan que esta pesada pulsera de oro contiene el poder del sol.","Fuerza +35 Velocidad -15",CONCAT(@linkEquipamiento,"4",@png)),
+    ("Pulsera cometa","Activa la fuerza destructiva de un cometa que viaja por el espacio.","Fuerza +35 Defensa -15",CONCAT(@linkEquipamiento,"40",@png)),
+    ("Pulsera legendaria","Este fabuloso accesorio rezuma poder.","Fuerza +50 Defensa -25",CONCAT(@linkEquipamiento,"41",@png)),
+    ("Anillo oxidado","Un anillo que se ha quedado viejo y oxidado. Aún tiene cierto poder.","Espíritu +10 Defensa -5",CONCAT(@linkEquipamiento,"6",@png));
 INSERT INTO inventario (nombre, bolsillo, id_interior)
     SELECT nombre, 'Comida', id FROM comida
     UNION
@@ -416,7 +420,12 @@ INSERT INTO inventario (nombre, bolsillo, id_interior)
 INSERT INTO yokai (nombre,medalla,tribu,rango,bio,habilidad,ataque,tecnica,animaximum,espiritacion,comida_favorita,comida_odiada,blasters,drop_comun,prob_comun,drop_raro,prob_raro,dinero,experiencia,huecos_obj,fuego,hielo,tierra,rayo,agua,viento) VALUES
     ("Alcaldero",CONCAT(@linkMedalla, "1", @png),"Valiente","E","Un Yo-kai descuidado que solo lleva un taparrabos y una sartén en la cabeza. No intentes imitarlo.","Despreocupación","Pelmapunzadas","Ascuas","Palillo Puntiagudo","A la Ligera","Arroz","Pan","Luchador","Arroz con ciruelas",45,"Exporbe S",17,0.07,28,1,0.7,1,1,1,1.3,1),
     ("Sinná",CONCAT(@linkMedalla,"2",@png),"Valiente","C","Al quitarse la sartén, Sinná está desprotegido ante el mundo. Pero no le verás ni un moratón en el cuerpo ni expresar dolor.","Despreocupación","Multipuñalada","Ascuas","Lluvia de Palillos","Sin Defensa","Arroz","Pan","Luchador","Arroz en hoja de col",55,"Pulsera de fuego",16,0.16,32,1,0.5,1,1,1,1.5,1),
-    ("Sinnareno",CONCAT(@linkMedalla,"3",@png),"Valiente","B","Un Yo-kai que siempre está dispuesto a combatir. Sin ropa que lo ralentice, siempre llega temprano y se pone moreno.","Despreocupación","Multipuñalada","Guijarro","Corte Profundo","Atrevimiento","Arroz","Pan","Luchador","Arroz con huevas",50,"Golpes secretos",5,0.21,38,2,1,1,0.5,0.5,1,1.8);
+    ("Sinnareno",CONCAT(@linkMedalla,"3",@png),"Valiente","B","Un Yo-kai que siempre está dispuesto a combatir. Sin ropa que lo ralentice, siempre llega temprano y se pone moreno.","Despreocupación","Multipuñalada","Guijarro","Corte Profundo","Atrevimiento","Arroz","Pan","Luchador","Arroz con huevas",50,"Golpes secretos",5,0.21,38,2,1,1,0.5,0.5,1,1.8),
+    ("Katano",CONCAT(@linkMedalla,"4",@png),"Valiente","E","Un Yo-kai con forma de catana que te absorbe la inspiración. Para ser tan vago está muy afilado.","Cuerpo Afilado","Corte Doble","Torbellino","Tajo Desganado","Dejadez","Refrescos","Verduras","Luchador","Muñeco de trapo",35,"Exporbe S",17,0.20,22,1,1,1.3,1,1,1,0.7),
+    ("Katananái",CONCAT(@linkMedalla,"5",@png),"Valiente","C","Demasiado vago para cortarse el pelo, pero no para atacar con sus mechones despeinados.","Cuerpo Afilado","Corte Doble","Torbellino","Ráfaga Resignada","Pereza","Refrescos","Verduras","Luchador","Exporbe S",45,"Exporbe M",20,0.20,28,1,1,1.5,1,1,1,0.5),
+    ("Katakroken",CONCAT(@linkMedalla,"6",@png),"Valiente","B","Es más peligroso de lo que parece. Puede derrotar a sus oponentes con solo un tajo.","Cuerpo Afilado","Corte Doble","Granizo","Golpe Fantasma","Pereza","Refrescos","Verduras","Luchador","Anillo oxidado",50,"Date vida",5,0.31,31,1,1.3,0.7,1,1,0.7,1),
+    ("Milimpiano",CONCAT(@linkMedalla,"7",@png),"Valiente","E","Soldado de infantería a quien le encanta limpiar. Gracias a su impoluta reputación llegará a ser shogún.","Pulcritud","Pelmapunzadas","Granizo","Círculo Puro","Lavado","Dulces","Comida china","Luchador","Exporbe S",45,"Muñeco de bronce",10,0.15,32,1,1.3,0.7,1,1,1,1);
+
 INSERT INTO yokai_localizacion (yokai, localizacion, anotaciones) VALUES
     (1, "La pasarela", NULL),
     (1, "Floridablanca Norte", "Hierba"),
