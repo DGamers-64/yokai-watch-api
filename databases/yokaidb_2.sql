@@ -50,45 +50,36 @@ CREATE TABLE localizacion (
     zona VARCHAR(30)
 );
 
+CREATE TABLE inventario (
+    nombre VARCHAR(50) PRIMARY KEY,
+    bolsillo VARCHAR(15)
+);
+
 CREATE TABLE comida (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(25),
+    inventario VARCHAR(50),
     descripcion VARCHAR(90),
     tipo VARCHAR(20),
-    imagen TEXT
+    imagen TEXT,
+    FOREIGN KEY (inventario) REFERENCES inventario(nombre)
 );
 
 CREATE TABLE objeto (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(25),
+    inventario VARCHAR(50),
     descripcion VARCHAR(90),
     efecto VARCHAR(50),
-    imagen TEXT
+    imagen TEXT,
+    FOREIGN KEY (inventario) REFERENCES inventario(nombre)
 );
 
 CREATE TABLE equipamiento (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(25),
+    inventario VARCHAR(50),
     descripcion VARCHAR(90),
     efecto VARCHAR(50),
-    imagen TEXT
-);
-
-CREATE TABLE animal (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(25),
-    tipo VARCHAR(5),
-    descripcion VARCHAR(90),
-    localizacion VARCHAR(50),
-    anotaciones VARCHAR(30),
     imagen TEXT,
-    FOREIGN KEY (localizacion) REFERENCES localizacion(nombre)
-);
-
-CREATE TABLE inventario (
-    nombre VARCHAR(50) PRIMARY KEY,
-    bolsillo VARCHAR(15),
-    id_interior INT
+    FOREIGN KEY (inventario) REFERENCES inventario(nombre)
 );
 
 -- TODO: CREATE TABLE BOLSILLOS DEL INVENTARIO
@@ -152,7 +143,6 @@ CREATE TABLE objetos_localizacion (
     nombre VARCHAR(50),
     localizacion VARCHAR(50),
     anotaciones VARCHAR(50),
-    precio FLOAT,
     FOREIGN KEY (nombre) REFERENCES inventario(nombre),
     FOREIGN KEY (localizacion) REFERENCES localizacion(nombre)
 );
@@ -162,7 +152,6 @@ CREATE TABLE equipamiento_localizacion (
     nombre VARCHAR(50),
     localizacion VARCHAR(50),
     anotaciones VARCHAR(50),
-    precio FLOAT,
     FOREIGN KEY (nombre) REFERENCES inventario(nombre),
     FOREIGN KEY (localizacion) REFERENCES localizacion(nombre)
 );
@@ -274,8 +263,137 @@ INSERT INTO localizacion (nombre, zona) VALUES
     ("Portales místicos", "Portales místicos"),
     ("Evolución", "Evolución"),
     ("Infierno Infinito", "Infierno Infinito");
-
-INSERT INTO comida (nombre, descripcion, tipo, imagen) VALUES
+INSERT INTO inventario (nombre, bolsillo) VALUES
+    ("Chocobarrita","Comida"),
+    ("Arroz con ciruelas","Comida"),
+    ("Arroz en hoja de col","Comida"),
+    ("Arroz con huevas","Comida"),
+    ("Arroz con gambas","Comida"),
+    ("Sándwich","Comida"),
+    ("Bollo con crema","Comida"),
+    ("Pan de curry","Comida"),
+    ("Baguette","Comida"),
+    ("Rosca lenguaraz","Comida"),
+    ("Chicle de 10","Comida"),
+    ("Caramelo pegajoso","Comida"),
+    ("Galleta gigante","Comida"),
+    ("Caramelos de frutas","Comida"),
+    ("Helado granizado","Comida"),
+    ("Manz. caramelo","Comida"),
+    ("Leche","Comida"),
+    ("Café con leche","Comida"),
+    ("Leche de frutas","Comida"),
+    ("Leche fresca","Comida"),
+    ("Y-Cola","Comida"),
+    ("Té relajante","Comida"),
+    ("Insomnia Y","Comida"),
+    ("Energicina","Comida"),
+    ("Hamburguesa","Comida"),
+    ("Hambur. queso","Comida"),
+    ("Hambur. doble","Comida"),
+    ("Hamburguesa Ñam","Comida"),
+    ("Vaso de ramen","Comida"),
+    ("Ramen con cerdo","Comida"),
+    ("Ramen deluxe","Comida"),
+    ("Ramen completo","Comida"),
+    ("Maki de pepino","Comida"),
+    ("Nigiri de gamba","Comida"),
+    ("Maki de huevas","Comida"),
+    ("Nigiri de atún","Comida"),
+    ("Empanad. chinas","Comida"),
+    ("Hígado cebollino","Comida"),
+    ("Tortilla de cangrejo","Comida"),
+    ("Gambas picantes","Comida"),
+    ("Tofu con carne","Comida"),
+    ("Zanahoria","Comida"),
+    ("Pepino","Comida"),
+    ("Brote de bambú","Comida"),
+    ("Seta japonesa","Comida"),
+    ("Muslo de pollo","Comida"),
+    ("Panceta","Comida"),
+    ("Lengua de vaca","Comida"),
+    ("Carne veteada","Comida"),
+    ("Caballa en salazón","Comida"),
+    ("Jurel","Comida"),
+    ("Erizo fresco","Comida"),
+    ("Atún selecto","Comida"),
+    ("Curry de pollo","Comida"),
+    ("Curry de cordero","Comida"),
+    ("Curry de marisco","Comida"),
+    ("Curry mixto","Comida"),
+    ("Curry de verduras","Comida"),
+    ("Tarta de queso","Comida"),
+    ("Tarta de fresa","Comida"),
+    ("Tortitas","Comida"),
+    ("Helado con frutas","Comida"),
+    ("Dulce de arroz","Comida"),
+    ("Fantasquebollo","Comida"),
+    ("Carnanibollo","Comida"),
+    ("Daikon al vapor","Comida"),
+    ("Huevo cocido","Comida"),
+    ("Brochetas de carne","Comida"),
+    ("Caldo completo","Comida"),
+    ("Fideos sarracenos","Comida"),
+    ("Patatas fritas","Comida"),
+    ("Saladitos","Comida"),
+    ("Palomitas de queso","Comida"),
+    ("Guisantes aperitivo","Comida"),
+    ("Exporbe mini","Objeto"),
+    ("Exporbe S","Objeto"),
+    ("Exporbe M","Objeto"),
+    ("Exporbe L","Objeto"),
+    ("Exporbe XL","Objeto"),
+    ("Exporbe sagrado","Objeto"),
+    ("Resistina","Objeto"),
+    ("Resistina Alfa","Objeto"),
+    ("Golpes secretos","Objeto"),
+    ("Secretos del alma","Objeto"),
+    ("Técnicas a tope","Objeto"),
+    ("Date vida","Objeto"),
+    ("Kárate va","Objeto"),
+    ("Kárate doy","Objeto"),
+    ("Tecnicedario","Objeto"),
+    ("Tecnipedia","Objeto"),
+    ("En guardia","Objeto"),
+    ("Defensa gloriosa","Objeto"),
+    ("Ángel sanador","Objeto"),
+    ("Adiós, angelito","Objeto"),
+    ("Cansino y paz","Objeto"),
+    ("Código Cansino","Objeto"),
+    ("Cooperar hoy n.º 7","Objeto"),
+    ("Especial Cooperar","Objeto"),
+    ("Talismán de fuerza","Objeto"),
+    ("Talismán de espíritu","Objeto"),
+    ("Talism. defensa","Objeto"),
+    ("Talismán veloz","Objeto"),
+    ("Medi. asquerosa","Objeto"),
+    ("Medicina amarga","Objeto"),
+    ("Medicina increíble","Objeto"),
+    ("Muñeco de trapo","Objeto"),
+    ("Muñeco de hierro","Objeto"),
+    ("Muñeco de bronce","Objeto"),
+    ("Muñeco de plata","Objeto"),
+    ("Muñeco de oro","Objeto"),
+    ("Muñeco de platino","Objeto"),
+    ("Cebo para peces","Objeto"),
+    ("Sirope negro","Objeto"),
+    ("Estrella brillante","Objeto"),
+    ("Billete de lotería","Objeto"),
+    ("Tarjeta musical","Objeto"),
+    ("Etiqueta de bronce","Objeto"),
+    ("Etiqueta de plata","Objeto"),
+    ("Etiqueta de oro","Objeto"),
+    ("Pulsera gastada","Equipamiento"),
+    ("Pulsera barata","Equipamiento"),
+    ("Pulsera punki","Equipamiento"),
+    ("Pulsera de fuego","Equipamiento"),
+    ("Pulsera de pinchos","Equipamiento"),
+    ("Pulsera excelente","Equipamiento"),
+    ("Pulsera de sol","Equipamiento"),
+    ("Pulsera cometa","Equipamiento"),
+    ("Pulsera legendaria","Equipamiento"),
+    ("Anillo oxidado","Equipamiento");
+INSERT INTO comida (inventario, descripcion, tipo, imagen) VALUES
     ("Chocobarrita","El dulce de chocolate favorito de los Yo-kai gatos.","Chocobarritas",CONCAT(@linkComida, "72", @png)),
     ("Arroz con ciruelas","Triángulo de arroz con ciruelas dentro. Está un poco amargo.","Arroz",CONCAT(@linkComida, "1", @png)),
     ("Arroz en hoja de col","Triángulo de arroz envuelto en una hoja de col. Le da sabor.","Arroz",CONCAT(@linkComida, "2", @png)),
@@ -350,10 +468,7 @@ INSERT INTO comida (nombre, descripcion, tipo, imagen) VALUES
     ("Saladitos","Quien avisa no es traidor: si empiezas, ¡no podrás parar!","Aperitivos",CONCAT(@linkComida,"50",@png)),
     ("Palomitas de queso","Bolsa de aperitivos de maíz salados recubiertso de queso.","Aperitivos",CONCAT(@linkComida,"51",@png)),
     ("Guisantes aperitivo","Los guisantes blancos crujientes son la debilidad de todo padre.","Aperitivos",CONCAT(@linkComida,"52",@png));
-INSERT INTO animal (nombre, tipo, descripcion, localizacion, anotaciones, imagen) VALUES
-    ("Cigarra verde","Bicho","¡Una cigarra verde que canta una canción que recuerda al verano!","Floridablanca Norte","Árboles",CONCAT(@linkAnimal,"1",@png)),
-    ("Cigarra marrón","Bicho","Una cigarra marrón que emite un sonido muy fuerte.","Floridablanca Norte","Árboles",CONCAT(@linkAnimal,"2",@png));
-INSERT INTO objeto (nombre, descripcion, efecto, imagen) VALUES
+INSERT INTO objeto (inventario, descripcion, efecto, imagen) VALUES
     ("Exporbe mini", "Una pizca de este pequeño orbe vale tres horas de entrenamiento.","En amigo. Gana 10 pts. de EXP.",CONCAT(@linkObjeto, "19", @png)),
     ("Exporbe S", "Tres días de entrenamiento con solo tocar este exporbe.", "En amigo. Gana 50 pts. de EXP.", CONCAT(@linkObjeto,"60",@png)),
     ("Exporbe M", "Quien toca este exporbe consigue la experiencia de un maestro.", "En amigo. Gana 500 pts. de EXP.", CONCAT(@linkObjeto,"61",@png)),
@@ -399,7 +514,7 @@ INSERT INTO objeto (nombre, descripcion, efecto, imagen) VALUES
     ("Etiqueta de bronce","Permite acceder a niveles bronce en YO-KAI WATCH Blasters.","",CONCAT(@linkObjeto,"14",@png)),
     ("Etiqueta de plata","Permite acceder a niveles plata en YO-KAI WATCH Blasters.","",CONCAT(@linkObjeto,"15",@png)),
     ("Etiqueta de oro","Permite acceder a niveles oro en YO-KAI WATCH Blasters.","",CONCAT(@linkObjeto,"16",@png));
-INSERT INTO equipamiento (nombre, descripcion, efecto, imagen) VALUES
+INSERT INTO equipamiento (inventario, descripcion, efecto, imagen) VALUES
     ("Pulsera gastada","Es algo barata, pero ¡para algunos Yo-kai es más que suficiente!","Fuerza +10 Velocidad -5",CONCAT(@linkEquipamiento,"1",@png)),
     ("Pulsera barata","No tiene mucho estilo, pero por lo menos hace el apaño.","Fuerza +10 Defensa -5",CONCAT(@linkEquipamiento,"37",@png)),
     ("Pulsera punki","Complemento con púas para amantes del rock. ¡No te pinches!","Fuerza +18 Velocidad -8",CONCAT(@linkEquipamiento,"2",@png)),
@@ -410,12 +525,6 @@ INSERT INTO equipamiento (nombre, descripcion, efecto, imagen) VALUES
     ("Pulsera cometa","Activa la fuerza destructiva de un cometa que viaja por el espacio.","Fuerza +35 Defensa -15",CONCAT(@linkEquipamiento,"40",@png)),
     ("Pulsera legendaria","Este fabuloso accesorio rezuma poder.","Fuerza +50 Defensa -25",CONCAT(@linkEquipamiento,"41",@png)),
     ("Anillo oxidado","Un anillo que se ha quedado viejo y oxidado. Aún tiene cierto poder.","Espíritu +10 Defensa -5",CONCAT(@linkEquipamiento,"6",@png));
-INSERT INTO inventario (nombre, bolsillo, id_interior)
-    SELECT nombre, 'Comida', id FROM comida
-    UNION
-    SELECT nombre, 'Objeto', id FROM objeto
-    UNION
-    SELECT nombre, 'Equipamiento', id FROM equipamiento;
 INSERT INTO yokai (nombre,medalla,tribu,rango,bio,habilidad,ataque,tecnica,animaximum,espiritacion,comida_favorita,comida_odiada,blasters,drop_comun,prob_comun,drop_raro,prob_raro,dinero,experiencia,huecos_obj,fuego,hielo,tierra,rayo,agua,viento) VALUES
     ("Alcaldero",CONCAT(@linkMedalla, "1", @png),"Valiente","E","Un Yo-kai descuidado que solo lleva un taparrabos y una sartén en la cabeza. No intentes imitarlo.","Despreocupación","Pelmapunzadas","Ascuas","Palillo Puntiagudo","A la Ligera","Arroz","Pan","Luchador","Arroz con ciruelas",45,"Exporbe S",17,0.07,28,1,0.7,1,1,1,1.3,1),
     ("Sinná",CONCAT(@linkMedalla,"2",@png),"Valiente","C","Al quitarse la sartén, Sinná está desprotegido ante el mundo. Pero no le verás ni un moratón en el cuerpo ni expresar dolor.","Despreocupación","Multipuñalada","Ascuas","Lluvia de Palillos","Sin Defensa","Arroz","Pan","Luchador","Arroz en hoja de col",55,"Pulsera de fuego",16,0.16,32,1,0.5,1,1,1,1.5,1),
@@ -439,6 +548,5 @@ INSERT INTO yokai_localizacion (yokai, localizacion, anotaciones) VALUES
     (2, "Evolución", "Alcaldero, Nivel 18"),
     (2, "Maldiexprés", "Rango C"),
     (2, "Maldiexprés", "Valiente");
-INSERT INTO objetos_localizacion (nombre, localizacion, anotaciones, precio) VALUES
-    ("Arroz con ciruelas", "Superhíper Norte", "Precio anterior a preguntabla Abuzampa",1.00),
-    ("Arroz con ciruelas", "Superhíper Norte", "Precio posterior a preguntabla Abuzampa",0.70);
+INSERT INTO objetos_localizacion (nombre, localizacion, anotaciones) VALUES
+    ("Arroz con ciruelas", "Superhíper Norte", NULL);
