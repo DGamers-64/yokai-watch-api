@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "node --env-file=.env --watch api.js",
-    "docker_start": "node --watch api.js"
+    "docker_start": "node --watch api.js",
+    "insertar_bbdd": "node --env-file=.env tools/insertar_bbdd.js"
   },
   "keywords": [],
   "author": "",

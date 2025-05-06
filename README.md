@@ -27,7 +27,7 @@ Para ejecutar la API puedes usar:
 
 # Establecimiento las bases de datos
 
-Tendrás que ejecutar en tu servidor los scripts que vienen en `./databases/`. Con ejecutarlos y establecer las variables de entorno correspondientes debería de ser suficiente para que tu proyecto funcione.
+Para ello puedes ejecutar el comando `node --run insertar_bbdd` y todo debería de ir correctamente. En caso de que no, siempre puedes ejecutar a mano los archivos de la carpeta `./databases/`.
 
 # Endpoints
 Para conocer más sobre los distintos endpoints que tiene el proyecto comprueba [`endpoints.md`](https://github.com/DGamers-64/yokai-watch-api/blob/master/endpoints.md) o la página de inicio.
