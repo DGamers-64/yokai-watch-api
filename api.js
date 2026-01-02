@@ -30,7 +30,7 @@ app.use((req, res) => {
 
 app.use('/', client)
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log('--------------------------------------------')
     console.log(`Servidor encendido en el puerto ${PORT}`)
     console.log(`Cliente alojado en http://localhost:${PORT}`)

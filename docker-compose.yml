@@ -4,18 +4,16 @@ services:
     image: mysql
     restart: unless-stopped
     volumes:
-      - ./databases/mysql/yokaidb.sql:/docker-entrypoint-initdb.d/0_init.sql
+      - ./databases/mysql/yokaidb_2.sql:/docker-entrypoint-initdb.d/0_init.sql
     ports:
-      - 3307:3306
+      - 3310:3306
     expose:
       - 3306
     environment:
-      MYSQL_DATABASE: yokaidb
+      MYSQL_DATABASE: yokaidb_2
       MYSQL_USER: admin
       MYSQL_PASSWORD: letmein
       MYSQL_ROOT_PASSWORD: letmein
-    networks:
-      - internalnet
 
   yokapi:
     container_name: yokapi
@@ -33,11 +31,5 @@ services:
       DB_USER: admin
       DB_PORT: 3306
       DB_PASSWORD: letmein
-      DB_NAME: yokaidb
+      DB_NAME: yokaidb_2
     command: sh -c "sleep 10 && node --run docker_start"
-    networks:
-      - internalnet
-
-networks:
-  internalnet:
-    driver: bridge

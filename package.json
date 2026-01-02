@@ -4,7 +4,8 @@
   "main": "api.js",
   "type": "module",
   "scripts": {
-    "start": "node --env-file=.env --watch api.js",
+    "start-watch": "node --env-file=.env --watch api.js",
+    "start": "node --env-file=.env api.js",
     "docker_start": "node --watch api.js",
     "insertar_bbdd": "node --env-file=.env tools/insertar_bbdd.js"
   },
@@ -15,7 +16,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "csv-parser": "^3.0.0",
-    "express": "^4.21.1",
+    "express": "^4.21.2",
     "mysql2": "^3.11.3"
   }
 }
